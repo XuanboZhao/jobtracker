@@ -14,7 +14,7 @@ from .storage import Store, NEW_DAYS
 
 ROOT = Path(__file__).resolve().parent.parent
 CONF = ROOT / "config"
-OUT = ROOT / "dashboard" / "data.json"
+OUT = ROOT / "docs" / "data.json"
 
 
 def load_yaml(p): return yaml.safe_load(p.read_text(encoding="utf-8"))
