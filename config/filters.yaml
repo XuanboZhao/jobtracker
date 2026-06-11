@@ -1,0 +1,18 @@
+# Keyword match is the only always-on filter. Everything else is opt-in:
+# leave a list empty to disable that filter entirely.
+keywords:                 # match if ANY appears in the job title (case-insensitive)
+  - quant
+  - quantitative
+  - finance
+  - trader
+  - trading
+  - research
+  - data
+  - risk
+
+match_in: title           # title | title_and_location
+
+# --- optional filters (empty = no filtering on that dimension) ---
+location_contains: []     # e.g. ["Netherlands", "Amsterdam", "Rotterdam", "Remote"]
+seniority_in: []          # e.g. ["Intern", "Graduate"]
+exclude_keywords: []      # drop titles containing any of these, e.g. ["Senior Manager"]

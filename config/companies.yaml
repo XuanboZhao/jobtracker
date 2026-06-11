@@ -1,0 +1,33 @@
+# Each company = one line. The adapter is chosen by `ats`, reused across companies.
+# Adding a company later = add a block here (no new code needed for known ATS types).
+#
+# ats types implemented: greenhouse, lever
+# ats types pending recon (currently sample/placeholder): custom
+companies:
+  - name: IMC
+    category: 自营交易            # company category (shown on the board)
+    ats: greenhouse
+    token: imc                    # CONFIRMED: job-boards.eu.greenhouse.io/imc
+    enabled: true
+
+  # --- pending one recon step each: confirm the real feed, then flip enabled:true ---
+  - name: Optiver
+    category: 自营交易
+    ats: custom                   # custom careers site, no public JSON found yet
+    token: ""
+    careers_url: https://optiver.com/working-at-optiver/career-opportunities/
+    enabled: false
+
+  - name: ASML
+    category: 科技/半导体
+    ats: custom                   # likely Workday/SuccessFactors-class — needs tenant URL
+    token: ""
+    careers_url: https://www.asml.com/en/careers/find-a-job
+    enabled: false
+
+  - name: Robeco
+    category: 资产管理
+    ats: custom
+    token: ""
+    careers_url: https://www.robeco.com/en-int/careers
+    enabled: false

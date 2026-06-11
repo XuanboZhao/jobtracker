@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Job Desk — 岗位追踪看板</title>
+<style>
+  :root{
+    --bg:#F1F3F1; --surface:#FFFFFF; --surface2:#FAFBFA;
+    --ink:#13161A; --muted:#5C6168; --faint:#8A8F95; --line:#E3E5E1;
+    --accent:#0E6F58; --accent-soft:#E2F0EB;
+    --r:10px;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    /* status palette */
+    --s0:#6B7280; --s0b:#EDEFF1;  /* 未申请 */
+    --s1:#2563A8; --s1b:#E7EFF8;  /* 已申请 */
+    --s2:#A56A00; --s2b:#FAF0DB;  /* 测评/笔试 */
+    --s3:#6D45B8; --s3b:#EFEAF8;  /* 面试 */
+    --s4:#2F7D2F; --s4b:#E7F2E3;  /* Offer */
+    --s5:#B23B3B; --s5b:#FBEAEA;  /* 已拒/关闭 */
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
+    font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:20px 18px 60px}
+
+  /* header */
+  header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:14px}
+  .brand{display:flex;align-items:baseline;gap:10px}
+  .brand h1{font-size:19px;font-weight:600;margin:0;letter-spacing:-.01em}
+  .brand .tick{font-family:var(--mono);font-size:11px;color:var(--accent);
+    background:var(--accent-soft);padding:2px 7px;border-radius:5px;font-weight:600}
+  .updated{font-family:var(--mono);font-size:11px;color:var(--faint)}
+
+  /* summary strip */
+  .summary{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+  .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+    padding:9px 13px;min-width:96px}
+  .stat .n{font-family:var(--mono);font-size:20px;font-weight:600;line-height:1.1}
+  .stat .l{font-size:11px;color:var(--muted);margin-top:1px}
+  .stat.hot .n{color:var(--accent)}
+
+  /* controls */
+  .controls{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
+    padding:12px 13px;margin-bottom:18px}
+  .crow{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+  .crow + .crow{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line)}
+  .fgroup{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+  .fgroup .cap{font-size:11px;color:var(--faint);font-family:var(--mono);
+    text-transform:uppercase;letter-spacing:.04em;margin-right:1px}
+  .chip{font-size:12.5px;border:1px solid var(--line);background:var(--surface2);
+    color:var(--muted);padding:4px 11px;border-radius:99px;cursor:pointer;
+    transition:.12s;user-select:none;white-space:nowrap}
+  .chip:hover{border-color:#cdd0cb}
+  .chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  .search{flex:1;min-width:150px;border:1px solid var(--line);border-radius:8px;
+    padding:7px 11px;font-size:13px;font-family:var(--sans);background:var(--surface2)}
+  .search:focus{outline:none;border-color:var(--accent)}
+  .view-toggle{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .view-toggle button{border:0;background:var(--surface2);padding:6px 13px;font-size:12.5px;
+    cursor:pointer;color:var(--muted);font-family:var(--sans)}
+  .view-toggle button.on{background:var(--ink);color:#fff}
+
+  /* sections (cards view) */
+  .section-head{display:flex;align-items:center;gap:9px;margin:22px 2px 11px}
+  .section-head h2{font-size:14px;font-weight:600;margin:0}
+  .section-head .dot{width:7px;height:7px;border-radius:99px;background:var(--accent)}
+  .section-head .count{font-family:var(--mono);font-size:12px;color:var(--faint)}
+  .section-head .line{flex:1;height:1px;background:var(--line)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:11px}
+
+  /* card */
+  .card{position:relative;background:var(--surface);border:1px solid var(--line);
+    border-radius:var(--r);padding:13px 14px 12px;display:flex;flex-direction:column;gap:9px;
+    border-left:3px solid var(--s0)}
+  .card.is-new{box-shadow:0 0 0 1px var(--accent-soft)}
+  .card .new-badge{position:absolute;top:11px;right:12px;font-family:var(--mono);font-size:9.5px;
+    font-weight:700;letter-spacing:.06em;color:#fff;background:var(--accent);
+    padding:2px 6px;border-radius:4px}
+  .card .title{font-size:14px;font-weight:600;line-height:1.35;padding-right:42px}
+  .card .title a{color:var(--ink);text-decoration:none}
+  .card .title a:hover{color:var(--accent)}
+  .meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+  .tag{font-size:11px;font-family:var(--mono);padding:2px 7px;border-radius:5px;
+    border:1px solid var(--line);color:var(--muted);background:var(--surface2)}
+  .tag.co{font-weight:600;color:var(--ink)}
+  .tag.cat{border-color:#d4e7e0;color:var(--accent);background:var(--accent-soft)}
+  .subrow{display:flex;align-items:center;justify-content:space-between;gap:8px;
+    font-size:11.5px;color:var(--faint);font-family:var(--mono)}
+  .loc{display:flex;align-items:center;gap:4px;min-width:0}
+  .loc span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+  /* status selector */
+  .statusbar{display:flex;align-items:center;gap:8px;margin-top:2px;padding-top:9px;border-top:1px solid var(--line)}
+  .statusbar label{font-size:11px;color:var(--faint);font-family:var(--mono)}
+  select.status{flex:1;font-size:12.5px;font-family:var(--sans);border:1px solid var(--line);
+    border-radius:7px;padding:5px 8px;cursor:pointer;font-weight:600;background:var(--surface2)}
+  select.status:focus{outline:none;border-color:var(--accent)}
+
+  /* board view */
+  .board{display:grid;grid-template-columns:repeat(6,minmax(168px,1fr));gap:10px;overflow-x:auto;padding-bottom:6px}
+  .col{background:var(--surface2);border:1px solid var(--line);border-radius:var(--r);padding:9px;min-width:168px}
+  .col h3{font-size:12px;margin:0 0 9px;display:flex;align-items:center;justify-content:space-between;font-weight:600}
+  .col h3 .c{font-family:var(--mono);font-size:11px;color:var(--faint);font-weight:400}
+  .col .swatch{width:8px;height:8px;border-radius:2px;display:inline-block;margin-right:6px;vertical-align:middle}
+  .col .card{margin-bottom:9px;padding:10px 11px}
+  .col .card .title{font-size:13px;padding-right:8px}
+  .col .card .new-badge{position:static;align-self:flex-start}
+
+  .empty{color:var(--faint);font-size:13px;padding:26px 2px;text-align:center;
+    border:1px dashed var(--line);border-radius:var(--r)}
+  .src-note{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:24px;
+    padding-top:12px;border-top:1px solid var(--line)}
+  @media(max-width:680px){.board{grid-template-columns:repeat(6,84vw)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <h1>Job Desk</h1>
+      <span class="tick">岗位追踪</span>
+    </div>
+    <span class="updated" id="updated"></span>
+  </header>
+
+  <div class="summary" id="summary"></div>
+
+  <div class="controls">
+    <div class="crow">
+      <input class="search" id="search" placeholder="搜索标题、公司、地点…">
+      <div class="view-toggle">
+        <button id="vCards" class="on" onclick="setView('cards')">卡片</button>
+        <button id="vBoard" onclick="setView('board')">看板</button>
+      </div>
+    </div>
+    <div class="crow"><div class="fgroup" id="fCompany"></div></div>
+    <div class="crow"><div class="fgroup" id="fCat"></div></div>
+    <div class="crow">
+      <div class="fgroup" id="fSeniority"></div>
+      <div class="fgroup" id="fStatus"></div>
+    </div>
+  </div>
+
+  <div id="view"></div>
+
+  <div class="src-note" id="srcNote"></div>
+</div>
+
+<script>
+/* ---------- application status model (user state, persisted) ---------- */
+const STATUSES = [
+  {k:"none", label:"未申请",   v:"--s0"},
+  {k:"applied", label:"已申请", v:"--s1"},
+  {k:"assess", label:"测评/笔试", v:"--s2"},
+  {k:"interview", label:"面试", v:"--s3"},
+  {k:"offer", label:"Offer",   v:"--s4"},
+  {k:"closed", label:"已拒/关闭", v:"--s5"},
+];
+const SMAP = Object.fromEntries(STATUSES.map((s,i)=>[s.k,{...s,i}]));
+
+/* ---------- persistence via artifact window.storage (single key) ---------- */
+const KEY="jobdesk_state_v1";
+let STATE={statuses:{}};
+const hasStore = (typeof window!=="undefined" && window.storage && window.storage.get);
+async function loadState(){
+  if(!hasStore) return;
+  try{ const r=await window.storage.get(KEY); if(r&&r.value){ STATE=JSON.parse(r.value);} }catch(e){/* first run */}
+}
+let saveT;
+function saveState(){
+  if(!hasStore) return;
+  clearTimeout(saveT);
+  saveT=setTimeout(()=>{ try{ window.storage.set(KEY, JSON.stringify(STATE)); }catch(e){} },150);
+}
+const getStatus=id=>STATE.statuses[id]||"none";
+function setStatus(id,k){ STATE.statuses[id]=k; saveState(); render(); }
+
+/* ---------- data: load ./data.json (pipeline output) else embedded sample ---------- */
+const SAMPLE_DATA = {"generated_at":"2026-06-11","jobs":[{"id":"imc-quant-trader-grad","company":"IMC","company_category":"自营交易","title":"Quantitative Trader — Graduate 2026","job_category":"Quant","seniority":"Graduate","location":"Amsterdam, NL","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-06-09","last_seen":"2026-06-11","is_open":true},{"id":"imc-quant-research-intern","company":"IMC","company_category":"自营交易","title":"Quantitative Research Internship","job_category":"Quant","seniority":"Intern","location":"Amsterdam, NL","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-06-10","last_seen":"2026-06-11","is_open":true},{"id":"imc-swe-cpp","company":"IMC","company_category":"自营交易","title":"Software Engineer — C++ (Low Latency)","job_category":"SWE","seniority":"Experienced","location":"Amsterdam, NL","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-05-21","last_seen":"2026-06-11","is_open":true},{"id":"imc-fpga","company":"IMC","company_category":"自营交易","title":"FPGA Engineer","job_category":"SWE","seniority":"Experienced","location":"Sydney, AU","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-05-14","last_seen":"2026-06-11","is_open":true},{"id":"optiver-grad-trader","company":"Optiver","company_category":"自营交易","title":"Graduate Trader 2026","job_category":"Trading","seniority":"Graduate","location":"Amsterdam, NL","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-06-08","last_seen":"2026-06-11","is_open":true},{"id":"optiver-quant-researcher","company":"Optiver","company_category":"自营交易","title":"Quantitative Researcher","job_category":"Quant","seniority":"Experienced","location":"Amsterdam, NL","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-05-19","last_seen":"2026-06-11","is_open":true},{"id":"optiver-swe-ll","company":"Optiver","company_category":"自营交易","title":"Software Engineer — Low Latency","job_category":"SWE","seniority":"Experienced","location":"London, UK","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-05-27","last_seen":"2026-06-11","is_open":true},{"id":"optiver-risk-analyst","company":"Optiver","company_category":"自营交易","title":"Market Risk Analyst","job_category":"Risk","seniority":"Experienced","location":"Amsterdam, NL","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-05-12","last_seen":"2026-06-11","is_open":true},{"id":"asml-data-scientist","company":"ASML","company_category":"科技/半导体","title":"Data Scientist — Yield","job_category":"Data","seniority":"Experienced","location":"Veldhoven, NL","url":"https://www.asml.com/en/careers/find-a-job","first_seen":"2026-06-10","last_seen":"2026-06-11","is_open":true},{"id":"asml-ml-intern","company":"ASML","company_category":"科技/半导体","title":"Machine Learning Engineer Internship","job_category":"Data","seniority":"Intern","location":"Veldhoven, NL","url":"https://www.asml.com/en/careers/find-a-job","first_seen":"2026-05-30","last_seen":"2026-06-11","is_open":true},{"id":"asml-swe-litho","company":"ASML","company_category":"科技/半导体","title":"Software Engineer — Computational Lithography","job_category":"SWE","seniority":"Experienced","location":"Veldhoven, NL","url":"https://www.asml.com/en/careers/find-a-job","first_seen":"2026-05-16","last_seen":"2026-06-11","is_open":true},{"id":"robeco-quant-fi","company":"Robeco","company_category":"资产管理","title":"Quantitative Researcher — Fixed Income","job_category":"Quant","seniority":"Experienced","location":"Rotterdam, NL","url":"https://www.robeco.com/en-int/careers","first_seen":"2026-06-09","last_seen":"2026-06-11","is_open":true},{"id":"robeco-investment-analyst","company":"Robeco","company_category":"资产管理","title":"Investment Analyst — Sustainable Investing","job_category":"Finance","seniority":"Experienced","location":"Rotterdam, NL","url":"https://www.robeco.com/en-int/careers","first_seen":"2026-05-23","last_seen":"2026-06-11","is_open":true},{"id":"robeco-risk-manager","company":"Robeco","company_category":"资产管理","title":"Risk Manager — Investment Risk","job_category":"Risk","seniority":"Experienced","location":"Rotterdam, NL","url":"https://www.robeco.com/en-int/careers","first_seen":"2026-05-18","last_seen":"2026-06-11","is_open":true}]};
+let JOBS=[], GENERATED_AT="";
+async function loadData(){
+  try{
+    const res=await fetch("./data.json",{cache:"no-store"});
+    if(res.ok){ const d=await res.json(); JOBS=d.jobs||d; GENERATED_AT=d.generated_at||""; return "live"; }
+  }catch(e){}
+  JOBS=SAMPLE_DATA.jobs; GENERATED_AT=SAMPLE_DATA.generated_at; return "sample";
+}
+
+/* ---------- new-vs-archive logic (7-day window) ---------- */
+const NOW=new Date("2026-06-11T09:00:00");
+const NEW_DAYS=7;
+function isNew(j){ const d=(NOW-new Date(j.first_seen))/86400000; return d>=0 && d<NEW_DAYS; }
+function daysOpen(j){ return Math.max(0,Math.round((NOW-new Date(j.first_seen))/86400000)); }
+
+/* ---------- filters ---------- */
+let FILT={company:new Set(),cat:new Set(),seniority:new Set(),status:new Set(),q:"",view:"cards"};
+function uniq(key){ return [...new Set(JOBS.map(j=>j[key]))].filter(Boolean).sort(); }
+
+function buildChips(){
+  const mk=(host,vals,setName)=>{
+    host.innerHTML="";
+    const cap=document.createElement("span"); cap.className="cap";
+    cap.textContent={fCompany:"公司类别",fCat:"岗位类别",fSeniority:"资历"}[host.id]||"";
+    host.appendChild(cap);
+    vals.forEach(v=>{
+      const c=document.createElement("span"); c.className="chip"; c.textContent=v;
+      c.onclick=()=>{ FILT[setName].has(v)?FILT[setName].delete(v):FILT[setName].add(v); c.classList.toggle("on"); render(); };
+      host.appendChild(c);
+    });
+  };
+  mk(document.getElementById("fCompany"),uniq("company_category"),"company");
+  mk(document.getElementById("fCat"),uniq("job_category"),"cat");
+  mk(document.getElementById("fSeniority"),uniq("seniority"),"seniority");
+  // status filter chips
+  const sh=document.getElementById("fStatus"); sh.innerHTML="";
+  const cap=document.createElement("span"); cap.className="cap"; cap.textContent="申请状态"; sh.appendChild(cap);
+  STATUSES.forEach(s=>{
+    const c=document.createElement("span"); c.className="chip"; c.textContent=s.label;
+    c.onclick=()=>{ FILT.status.has(s.k)?FILT.status.delete(s.k):FILT.status.add(s.k); c.classList.toggle("on"); render(); };
+    sh.appendChild(c);
+  });
+}
+function passes(j){
+  if(FILT.company.size && !FILT.company.has(j.company_category)) return false;
+  if(FILT.cat.size && !FILT.cat.has(j.job_category)) return false;
+  if(FILT.seniority.size && !FILT.seniority.has(j.seniority)) return false;
+  if(FILT.status.size && !FILT.status.has(getStatus(j.id))) return false;
+  if(FILT.q){ const s=(j.title+" "+j.company+" "+j.location).toLowerCase(); if(!s.includes(FILT.q)) return false; }
+  return true;
+}
+
+/* ---------- rendering ---------- */
+function cardEl(j){
+  const st=SMAP[getStatus(j.id)];
+  const el=document.createElement("div"); el.className="card"+(isNew(j)?" is-new":"");
+  el.style.borderLeftColor=`var(${st.v})`;
+  const opts=STATUSES.map(s=>`<option value="${s.k}" ${s.k===st.k?"selected":""}>${s.label}</option>`).join("");
+  el.innerHTML=`
+    ${isNew(j)?'<span class="new-badge">NEW</span>':''}
+    <div class="title"><a href="${j.url}" target="_blank" rel="noopener">${j.title}</a></div>
+    <div class="meta">
+      <span class="tag co">${j.company}</span>
+      <span class="tag cat">${j.job_category}</span>
+      <span class="tag">${j.seniority}</span>
+    </div>
+    <div class="subrow">
+      <span class="loc">📍 <span>${j.location}</span></span>
+      <span>${isNew(j)?"今天/本周":daysOpen(j)+"天前"}</span>
+    </div>
+    <div class="statusbar">
+      <label>状态</label>
+      <select class="status" style="color:var(${st.v});border-color:var(${st.v})">${opts}</select>
+    </div>`;
+  el.querySelector("select").onchange=e=>setStatus(j.id,e.target.value);
+  return el;
+}
+
+function sectionEl(title,jobs,dotColor){
+  const wrap=document.createElement("div");
+  const h=document.createElement("div"); h.className="section-head";
+  h.innerHTML=`<span class="dot" style="background:${dotColor}"></span><h2>${title}</h2>
+    <span class="count">${jobs.length}</span><span class="line"></span>`;
+  wrap.appendChild(h);
+  if(!jobs.length){ const e=document.createElement("div"); e.className="empty"; e.textContent="没有符合当前筛选的岗位。"; wrap.appendChild(e); return wrap; }
+  const g=document.createElement("div"); g.className="grid";
+  jobs.forEach(j=>g.appendChild(cardEl(j)));
+  wrap.appendChild(g);
+  return wrap;
+}
+
+function renderCards(host,open){
+  const vis=open.filter(passes);
+  const fresh=vis.filter(isNew), arch=vis.filter(j=>!isNew(j));
+  host.appendChild(sectionEl("本周新增",fresh,"var(--accent)"));
+  host.appendChild(sectionEl("仍在招 · 存档",arch,"#9aa0a6"));
+}
+function renderBoard(host,open){
+  const vis=open.filter(passes);
+  const board=document.createElement("div"); board.className="board";
+  STATUSES.forEach(s=>{
+    const col=document.createElement("div"); col.className="col";
+    const items=vis.filter(j=>getStatus(j.id)===s.k);
+    col.innerHTML=`<h3><span><span class="swatch" style="background:var(${s.v})"></span>${s.label}</span><span class="c">${items.length}</span></h3>`;
+    items.forEach(j=>col.appendChild(cardEl(j)));
+    board.appendChild(col);
+  });
+  host.appendChild(board);
+}
+
+function renderSummary(open){
+  const fresh=open.filter(isNew).length;
+  const inProg=open.filter(j=>["applied","assess","interview"].includes(getStatus(j.id))).length;
+  const offers=open.filter(j=>getStatus(j.id)==="offer").length;
+  const data=[
+    {n:open.length,l:"在招岗位",hot:false},
+    {n:fresh,l:"本周新增",hot:true},
+    {n:inProg,l:"进行中",hot:false},
+    {n:offers,l:"Offer",hot:false},
+  ];
+  document.getElementById("summary").innerHTML=data.map(d=>
+    `<div class="stat${d.hot?' hot':''}"><div class="n">${d.n}</div><div class="l">${d.l}</div></div>`).join("");
+}
+
+function render(){
+  const open=JOBS.filter(j=>j.is_open!==false);
+  renderSummary(open);
+  const host=document.getElementById("view"); host.innerHTML="";
+  if(FILT.view==="cards") renderCards(host,open); else renderBoard(host,open);
+}
+
+function setView(v){
+  FILT.view=v;
+  document.getElementById("vCards").classList.toggle("on",v==="cards");
+  document.getElementById("vBoard").classList.toggle("on",v==="board");
+  render();
+}
+
+/* ---------- boot ---------- */
+(async function(){
+  await loadState();
+  const src=await loadData();
+  document.getElementById("search").oninput=e=>{FILT.q=e.target.value.trim().toLowerCase();render();};
+  buildChips();
+  document.getElementById("updated").textContent="数据更新于 "+(GENERATED_AT||"—");
+  document.getElementById("srcNote").textContent= src==="live"
+    ? "数据源：data.json（由每日流水线生成）。申请状态保存在本地，流水线刷新不会覆盖。"
+    : "当前为示例数据（演示用）。接入流水线后会自动替换为四家公司的实时岗位。申请状态本地保存，刷新数据不丢失。";
+  render();
+})();
+</script>
+</body>
+</html>

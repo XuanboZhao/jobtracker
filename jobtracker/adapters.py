@@ -1,0 +1,81 @@
+"""One adapter per ATS *type* (not per company). The config picks which one
+runs for each company, so 10 Greenhouse companies share this one function.
+
+Each adapter takes a company config dict and returns list[JobRecord].
+"""
+from __future__ import annotations
+import requests
+from .models import JobRecord
+
+TIMEOUT = 20
+HEADERS = {"User-Agent": "job-desk/0.1 (personal job tracker)"}
+
+
+def _gid(ats: str, company: str, ext) -> str:
+    return f"{ats}-{company}-{ext}".lower().replace(" ", "-")
+
+
+def greenhouse(cfg: dict) -> list[JobRecord]:
+    """Greenhouse Job Board API — public JSON, no auth.
+    https://boards-api.greenhouse.io/v1/boards/{token}/jobs?content=true
+    """
+    token = cfg["token"]
+    url = f"https://boards-api.greenhouse.io/v1/boards/{token}/jobs"
+    r = requests.get(url, params={"content": "false"}, headers=HEADERS, timeout=TIMEOUT)
+    r.raise_for_status()
+    out = []
+    for j in r.json().get("jobs", []):
+        loc = (j.get("location") or {}).get("name", "") or ""
+        out.append(JobRecord(
+            id=_gid("gh", cfg["name"], j["id"]),
+            company=cfg["name"],
+            company_category=cfg["category"],
+            title=j.get("title", "").strip(),
+            url=j.get("absolute_url", ""),
+            location=loc,
+            posted_at=(j.get("updated_at") or j.get("first_published") or "")[:10],
+            source_ats="greenhouse",
+        ))
+    return out
+
+
+def lever(cfg: dict) -> list[JobRecord]:
+    """Lever Postings API — public JSON, no auth.
+    https://api.lever.co/v0/postings/{token}?mode=json
+    """
+    token = cfg["token"]
+    url = f"https://api.lever.co/v0/postings/{token}"
+    r = requests.get(url, params={"mode": "json"}, headers=HEADERS, timeout=TIMEOUT)
+    r.raise_for_status()
+    out = []
+    for j in r.json():
+        cats = j.get("categories", {}) or {}
+        out.append(JobRecord(
+            id=_gid("lv", cfg["name"], j.get("id", j.get("text", ""))),
+            company=cfg["name"],
+            company_category=cfg["category"],
+            title=j.get("text", "").strip(),
+            url=j.get("hostedUrl", ""),
+            location=cats.get("location", "") or "",
+            department=cats.get("team", "") or "",
+            posted_at=str(j.get("createdAt", ""))[:10],
+            source_ats="lever",
+        ))
+    return out
+
+
+def custom(cfg: dict) -> list[JobRecord]:
+    """Placeholder for sites without a public feed (Optiver/ASML/Robeco).
+    Implement per-site with httpx or Playwright once the feed is confirmed.
+    Returns nothing so the pipeline still runs cleanly with the others."""
+    return []
+
+
+REGISTRY = {"greenhouse": greenhouse, "lever": lever, "custom": custom}
+
+
+def fetch_company(cfg: dict) -> list[JobRecord]:
+    fn = REGISTRY.get(cfg.get("ats"))
+    if fn is None:
+        raise ValueError(f"unknown ats type: {cfg.get('ats')}")
+    return fn(cfg)
