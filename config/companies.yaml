@@ -1,56 +1,59 @@
 # Each company = one line. The adapter is chosen by `ats`, reused across companies.
-# Adding a company later = add a block here (no new code needed for known ATS types).
+# ats types: greenhouse, lever, workday, custom
 #
-# ats types implemented: greenhouse, lever
-# ats types pending recon (currently sample/placeholder): custom
+# Workday config: workday_tenant, workday_instance (default wd3), workday_board
 
 companies:
 
-  # ── GREENHOUSE — API confirmed, enabled ──────────────────────────────────────
+  # ══════════════════════════════════════════════════════════
+  #  自营交易 / Prop Trading & Market Making
+  # ══════════════════════════════════════════════════════════
+
+  # ── Greenhouse (API confirmed, enabled) ──────────────────
 
   - name: IMC
     category: 自营交易
     ats: greenhouse
-    token: imc                          # CONFIRMED: job-boards.eu.greenhouse.io/imc
+    token: imc
     enabled: true
 
   - name: Flow Traders
     category: 自营交易
     ats: greenhouse
-    token: flowtraders                  # CONFIRMED: boards-api.greenhouse.io/v1/boards/flowtraders
+    token: flowtraders
     enabled: true
 
   - name: Akuna Capital
     category: 自营交易
     ats: greenhouse
-    token: akunacapital                 # CONFIRMED: boards-api.greenhouse.io/v1/boards/akunacapital
+    token: akunacapital
     enabled: true
 
   - name: XTX Markets
     category: 自营交易
     ats: greenhouse
-    token: xtxmarketstechnologies       # CONFIRMED: job-boards.greenhouse.io/xtxmarketstechnologies
+    token: xtxmarketstechnologies
     enabled: true
 
   - name: Jump Trading
     category: 自营交易
     ats: greenhouse
-    token: jumptrading                  # CONFIRMED: boards-api.greenhouse.io/v1/boards/jumptrading
+    token: jumptrading
     enabled: true
 
   - name: Jane Street
     category: 自营交易
     ats: greenhouse
-    token: janestreet                   # CONFIRMED: boards-api.greenhouse.io/v1/boards/janestreet
+    token: janestreet
     enabled: true
 
   - name: Virtu Financial
     category: 自营交易
     ats: greenhouse
-    token: virtu                        # CONFIRMED: boards-api.greenhouse.io/v1/boards/virtu
+    token: virtu
     enabled: true
 
-  # ── CUSTOM — need one recon step each to find public feed ────────────────────
+  # ── Custom / pending recon ────────────────────────────────
 
   - name: Optiver
     category: 自营交易
@@ -61,14 +64,14 @@ companies:
 
   - name: Citadel Securities
     category: 自营交易
-    ats: custom                         # custom ATS, careers page blocks scraping
+    ats: custom
     token: ""
     careers_url: https://www.citadelsecurities.com/careers/open-opportunities/
     enabled: false
 
   - name: Susquehanna (SIG)
     category: 自营交易
-    ats: custom                         # own portal at careers.sig.com
+    ats: custom
     token: ""
     careers_url: https://careers.sig.com/
     enabled: false
@@ -82,7 +85,7 @@ companies:
 
   - name: All Options
     category: 自营交易
-    ats: custom                         # NL-based options market maker, no public feed
+    ats: custom
     token: ""
     careers_url: https://www.alloptions-international.com/careers/
     enabled: false
@@ -96,7 +99,7 @@ companies:
 
   - name: HAP Capital
     category: 自营交易
-    ats: custom                         # formerly Saen Options, Amsterdam-based
+    ats: custom
     token: ""
     careers_url: https://www.hapcapital.com/careers/
     enabled: false
@@ -115,7 +118,147 @@ companies:
     careers_url: https://www.tower-research.com/open-positions
     enabled: false
 
-  # ── ASSET MANAGEMENT ─────────────────────────────────────────────────────────
+  # ══════════════════════════════════════════════════════════
+  #  银行 / Dutch Banks
+  # ══════════════════════════════════════════════════════════
+
+  # ── Workday (API confirmed, enabled) ─────────────────────
+
+  - name: ING
+    category: 银行
+    ats: workday
+    workday_tenant: ing
+    workday_instance: wd3
+    workday_board: ICSNLDGEN         # Netherlands board
+    enabled: true
+
+  - name: Rabobank
+    category: 银行
+    ats: workday
+    workday_tenant: rabobank
+    workday_instance: wd3
+    workday_board: jobs
+    enabled: true
+
+  - name: NN Group
+    category: 银行
+    ats: workday
+    workday_tenant: nngroup
+    workday_instance: wd3
+    workday_board: WDExternal
+    enabled: true
+
+  # ── Custom / pending recon ────────────────────────────────
+
+  - name: ABN AMRO
+    category: 银行
+    ats: custom
+    token: ""
+    careers_url: https://www.werkenbijabnamro.nl/en/vacancies
+    enabled: false
+
+  - name: NIBC Bank
+    category: 银行
+    ats: custom
+    token: ""
+    careers_url: https://www.nibc.com/careers/
+    enabled: false
+
+  - name: Van Lanschot Kempen
+    category: 银行
+    ats: custom
+    token: ""
+    careers_url: https://www.vanlanschotkempen.com/en/careers
+    enabled: false
+
+  # ══════════════════════════════════════════════════════════
+  #  投行 / Investment Banks (NL offices)
+  # ══════════════════════════════════════════════════════════
+
+  - name: Goldman Sachs
+    category: 投行
+    ats: custom
+    token: ""
+    careers_url: https://www.goldmansachs.com/careers/
+    enabled: false
+
+  - name: JPMorgan
+    category: 投行
+    ats: custom
+    token: ""
+    careers_url: https://www.jpmorganchase.com/careers/
+    enabled: false
+
+  - name: Morgan Stanley
+    category: 投行
+    ats: custom
+    token: ""
+    careers_url: https://www.morganstanley.com/people/careers/
+    enabled: false
+
+  - name: Deutsche Bank
+    category: 投行
+    ats: custom
+    token: ""
+    careers_url: https://careers.db.com/
+    enabled: false
+
+  - name: Barclays
+    category: 投行
+    ats: custom
+    token: ""
+    careers_url: https://search.jobs.barclays/
+    enabled: false
+
+  - name: BNP Paribas
+    category: 投行
+    ats: custom
+    token: ""
+    careers_url: https://group.bnpparibas/en/careers
+    enabled: false
+
+  - name: Société Générale
+    category: 投行
+    ats: custom
+    token: ""
+    careers_url: https://careers.societegenerale.com/
+    enabled: false
+
+  - name: Citi
+    category: 投行
+    ats: custom
+    token: ""
+    careers_url: https://jobs.citi.com/
+    enabled: false
+
+  - name: UBS
+    category: 投行
+    ats: custom
+    token: ""
+    careers_url: https://www.ubs.com/global/en/careers.html
+    enabled: false
+
+  # ══════════════════════════════════════════════════════════
+  #  央行 / 监管机构
+  # ══════════════════════════════════════════════════════════
+
+  - name: De Nederlandsche Bank (DNB)
+    category: 央行
+    ats: custom
+    token: ""
+    careers_url: https://www.werkenbijdnb.nl/en/vacancies
+    enabled: false
+
+  - name: Euronext
+    category: 央行
+    ats: custom
+    token: ""
+    careers_url: https://www.euronext.com/en/careers
+    enabled: false
+
+  # ══════════════════════════════════════════════════════════
+  #  资产管理 / Asset Management
+  # ══════════════════════════════════════════════════════════
 
   - name: Robeco
     category: 资产管理
@@ -124,11 +267,34 @@ companies:
     careers_url: https://www.robeco.com/en-int/careers
     enabled: false
 
-  # ── TECH / SEMICONDUCTOR ─────────────────────────────────────────────────────
+  - name: APG Asset Management
+    category: 资产管理
+    ats: custom
+    token: ""
+    careers_url: https://www.apg.nl/en/career/
+    enabled: false
+
+  - name: PGGM
+    category: 资产管理
+    ats: custom
+    token: ""
+    careers_url: https://www.pggm.nl/en/careers/
+    enabled: false
+
+  - name: Aegon Asset Management
+    category: 资产管理
+    ats: custom
+    token: ""
+    careers_url: https://www.aegon.com/careers/
+    enabled: false
+
+  # ══════════════════════════════════════════════════════════
+  #  科技 / 半导体
+  # ══════════════════════════════════════════════════════════
 
   - name: ASML
     category: 科技/半导体
-    ats: custom                         # likely Workday — needs tenant URL confirmation
+    ats: custom
     token: ""
     careers_url: https://www.asml.com/en/careers/find-a-job
     enabled: false

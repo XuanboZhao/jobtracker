@@ -91,14 +91,74 @@ def lever(cfg: dict) -> list[JobRecord]:
     return out
 
 
+def workday(cfg: dict) -> list[JobRecord]:
+    """Workday Job Board API — semi-public REST endpoint (POST), no auth.
+    Config keys: workday_tenant, workday_instance (default wd3), workday_board
+    """
+    import re as _re
+    from datetime import date as _date, timedelta as _td
+
+    tenant   = cfg["workday_tenant"]
+    instance = cfg.get("workday_instance", "wd3")
+    board    = cfg["workday_board"]
+    base     = f"https://{tenant}.{instance}.myworkdayjobs.com"
+    api      = f"{base}/wday/cxs/{tenant}/{board}/jobs"
+
+    def _parse_posted(text: str) -> str:
+        if not text:
+            return ""
+        t = text.lower()
+        today = _date.today()
+        if "today" in t:
+            return today.isoformat()
+        m = _re.search(r"(\d+)\s+day", t)
+        if m:
+            return (_date.today() - _td(days=int(m.group(1)))).isoformat()
+        m = _re.search(r"(\d+)\s+month", t)
+        if m:
+            return (_date.today() - _td(days=int(m.group(1)) * 30)).isoformat()
+        return ""
+
+    out, offset, limit = [], 0, 50
+    while True:
+        r = requests.post(
+            api,
+            json={"appliedFacets": {}, "limit": limit, "offset": offset, "searchText": ""},
+            headers={**HEADERS, "Content-Type": "application/json"},
+            timeout=TIMEOUT,
+        )
+        r.raise_for_status()
+        data = r.json()
+        postings = data.get("jobPostings", [])
+        if not postings:
+            break
+        for j in postings:
+            path = j.get("externalPath", "")
+            ext_id = path.split("/")[-1] if path else j.get("title", "")
+            out.append(JobRecord(
+                id=_gid("wd", cfg["name"], ext_id),
+                company=cfg["name"],
+                company_category=cfg["category"],
+                title=j.get("title", "").strip(),
+                url=base + path if path else "",
+                location=j.get("locationsText", "") or "",
+                posted_at=_parse_posted(j.get("postedOn", "")),
+                source_ats="workday",
+                requires_dutch=None,  # description requires per-job fetch; skipped for now
+            ))
+        if offset + limit >= data.get("total", 0):
+            break
+        offset += limit
+    return out
+
+
 def custom(cfg: dict) -> list[JobRecord]:
-    """Placeholder for sites without a public feed (Optiver/ASML/Robeco).
-    Implement per-site with httpx or Playwright once the feed is confirmed.
+    """Placeholder for sites without a public feed.
     Returns nothing so the pipeline still runs cleanly with the others."""
     return []
 
 
-REGISTRY = {"greenhouse": greenhouse, "lever": lever, "custom": custom}
+REGISTRY = {"greenhouse": greenhouse, "lever": lever, "workday": workday, "custom": custom}
 
 
 def fetch_company(cfg: dict) -> list[JobRecord]:
