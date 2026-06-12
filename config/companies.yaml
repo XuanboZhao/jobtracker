@@ -3,31 +3,132 @@
 #
 # ats types implemented: greenhouse, lever
 # ats types pending recon (currently sample/placeholder): custom
+
 companies:
+
+  # ── GREENHOUSE — API confirmed, enabled ──────────────────────────────────────
+
   - name: IMC
-    category: 自营交易            # company category (shown on the board)
+    category: 自营交易
     ats: greenhouse
-    token: imc                    # CONFIRMED: job-boards.eu.greenhouse.io/imc
+    token: imc                          # CONFIRMED: job-boards.eu.greenhouse.io/imc
     enabled: true
 
-  # --- pending one recon step each: confirm the real feed, then flip enabled:true ---
+  - name: Flow Traders
+    category: 自营交易
+    ats: greenhouse
+    token: flowtraders                  # CONFIRMED: boards-api.greenhouse.io/v1/boards/flowtraders
+    enabled: true
+
+  - name: Akuna Capital
+    category: 自营交易
+    ats: greenhouse
+    token: akunacapital                 # CONFIRMED: boards-api.greenhouse.io/v1/boards/akunacapital
+    enabled: true
+
+  - name: XTX Markets
+    category: 自营交易
+    ats: greenhouse
+    token: xtxmarketstechnologies       # CONFIRMED: job-boards.greenhouse.io/xtxmarketstechnologies
+    enabled: true
+
+  - name: Jump Trading
+    category: 自营交易
+    ats: greenhouse
+    token: jumptrading                  # CONFIRMED: boards-api.greenhouse.io/v1/boards/jumptrading
+    enabled: true
+
+  - name: Jane Street
+    category: 自营交易
+    ats: greenhouse
+    token: janestreet                   # CONFIRMED: boards-api.greenhouse.io/v1/boards/janestreet
+    enabled: true
+
+  - name: Virtu Financial
+    category: 自营交易
+    ats: greenhouse
+    token: virtu                        # CONFIRMED: boards-api.greenhouse.io/v1/boards/virtu
+    enabled: true
+
+  # ── CUSTOM — need one recon step each to find public feed ────────────────────
+
   - name: Optiver
     category: 自营交易
-    ats: custom                   # custom careers site, no public JSON found yet
+    ats: custom
     token: ""
     careers_url: https://optiver.com/working-at-optiver/career-opportunities/
     enabled: false
 
-  - name: ASML
-    category: 科技/半导体
-    ats: custom                   # likely Workday/SuccessFactors-class — needs tenant URL
+  - name: Citadel Securities
+    category: 自营交易
+    ats: custom                         # custom ATS, careers page blocks scraping
     token: ""
-    careers_url: https://www.asml.com/en/careers/find-a-job
+    careers_url: https://www.citadelsecurities.com/careers/open-opportunities/
     enabled: false
+
+  - name: Susquehanna (SIG)
+    category: 自营交易
+    ats: custom                         # own portal at careers.sig.com
+    token: ""
+    careers_url: https://careers.sig.com/
+    enabled: false
+
+  - name: Qube Research & Technologies
+    category: 自营交易
+    ats: custom
+    token: ""
+    careers_url: https://www.qube-rt.com/careers/
+    enabled: false
+
+  - name: All Options
+    category: 自营交易
+    ats: custom                         # NL-based options market maker, no public feed
+    token: ""
+    careers_url: https://www.alloptions-international.com/careers/
+    enabled: false
+
+  - name: Maven Securities
+    category: 自营交易
+    ats: custom
+    token: ""
+    careers_url: https://www.mavensecurities.com/careers/
+    enabled: false
+
+  - name: HAP Capital
+    category: 自营交易
+    ats: custom                         # formerly Saen Options, Amsterdam-based
+    token: ""
+    careers_url: https://www.hapcapital.com/careers/
+    enabled: false
+
+  - name: Tibra Capital
+    category: 自营交易
+    ats: custom
+    token: ""
+    careers_url: https://www.tibracapital.com/careers/
+    enabled: false
+
+  - name: Tower Research Capital
+    category: 自营交易
+    ats: custom
+    token: ""
+    careers_url: https://www.tower-research.com/open-positions
+    enabled: false
+
+  # ── ASSET MANAGEMENT ─────────────────────────────────────────────────────────
 
   - name: Robeco
     category: 资产管理
     ats: custom
     token: ""
     careers_url: https://www.robeco.com/en-int/careers
+    enabled: false
+
+  # ── TECH / SEMICONDUCTOR ─────────────────────────────────────────────────────
+
+  - name: ASML
+    category: 科技/半导体
+    ats: custom                         # likely Workday — needs tenant URL confirmation
+    token: ""
+    careers_url: https://www.asml.com/en/careers/find-a-job
     enabled: false
