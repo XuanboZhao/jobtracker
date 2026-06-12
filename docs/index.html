@@ -4,116 +4,162 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Job Desk — 岗位追踪看板</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <style>
-  :root{
-    --bg:#F1F3F1; --surface:#FFFFFF; --surface2:#FAFBFA;
-    --ink:#13161A; --muted:#5C6168; --faint:#8A8F95; --line:#E3E5E1;
-    --accent:#0E6F58; --accent-soft:#E2F0EB;
-    --r:10px;
-    --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
-    --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
-    /* status palette */
-    --s0:#6B7280; --s0b:#EDEFF1;  /* 未申请 */
-    --s1:#2563A8; --s1b:#E7EFF8;  /* 已申请 */
-    --s2:#A56A00; --s2b:#FAF0DB;  /* 测评/笔试 */
-    --s3:#6D45B8; --s3b:#EFEAF8;  /* 面试 */
-    --s4:#2F7D2F; --s4b:#E7F2E3;  /* Offer */
-    --s5:#B23B3B; --s5b:#FBEAEA;  /* 已拒/关闭 */
-  }
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);
-    font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:1180px;margin:0 auto;padding:20px 18px 60px}
+:root{
+  --bg:#F1F3F1;--surface:#FFFFFF;--surface2:#FAFBFA;
+  --ink:#13161A;--muted:#5C6168;--faint:#8A8F95;--line:#E3E5E1;
+  --accent:#0E6F58;--accent-soft:#E2F0EB;--r:10px;
+  --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  --sans:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+  --s0:#6B7280;--s0b:#EDEFF1;
+  --s1:#2563A8;--s1b:#E7EFF8;
+  --s2:#A56A00;--s2b:#FAF0DB;
+  --s3:#6D45B8;--s3b:#EFEAF8;
+  --s4:#2F7D2F;--s4b:#E7F2E3;
+  --s5:#B23B3B;--s5b:#FBEAEA;
+  --s6:#7C6F5E;--s6b:#F0EDE8;
+  --like:#E85D04;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1280px;margin:0 auto;padding:20px 18px 90px}
 
-  /* header */
-  header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:14px}
-  .brand{display:flex;align-items:baseline;gap:10px}
-  .brand h1{font-size:19px;font-weight:600;margin:0;letter-spacing:-.01em}
-  .brand .tick{font-family:var(--mono);font-size:11px;color:var(--accent);
-    background:var(--accent-soft);padding:2px 7px;border-radius:5px;font-weight:600}
-  .updated{font-family:var(--mono);font-size:11px;color:var(--faint)}
+/* header */
+header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:16px}
+.brand{display:flex;align-items:baseline;gap:10px}
+.brand h1{font-size:19px;font-weight:600;margin:0;letter-spacing:-.01em}
+.brand .tick{font-family:var(--mono);font-size:11px;color:var(--accent);background:var(--accent-soft);padding:2px 7px;border-radius:5px;font-weight:600}
+.updated{font-family:var(--mono);font-size:11px;color:var(--faint)}
 
-  /* summary strip */
-  .summary{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
-  .stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
-    padding:9px 13px;min-width:96px}
-  .stat .n{font-family:var(--mono);font-size:20px;font-weight:600;line-height:1.1}
-  .stat .l{font-size:11px;color:var(--muted);margin-top:1px}
-  .stat.hot .n{color:var(--accent)}
+/* tabs */
+.tabs{display:flex;gap:2px;margin-bottom:20px;border-bottom:2px solid var(--line);padding-bottom:0}
+.tab-btn{border:none;background:none;padding:10px 18px 12px;font-size:13.5px;font-family:var(--sans);color:var(--muted);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:.12s;font-weight:500;border-radius:6px 6px 0 0}
+.tab-btn:hover{color:var(--ink);background:var(--accent-soft)}
+.tab-btn.active{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.tab-pane{display:none}.tab-pane.active{display:block}
 
-  /* controls */
-  .controls{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);
-    padding:12px 13px;margin-bottom:18px}
-  .crow{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-  .crow + .crow{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line)}
-  .fgroup{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
-  .fgroup .cap{font-size:11px;color:var(--faint);font-family:var(--mono);
-    text-transform:uppercase;letter-spacing:.04em;margin-right:1px}
-  .chip{font-size:12.5px;border:1px solid var(--line);background:var(--surface2);
-    color:var(--muted);padding:4px 11px;border-radius:99px;cursor:pointer;
-    transition:.12s;user-select:none;white-space:nowrap}
-  .chip:hover{border-color:#cdd0cb}
-  .chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
-  .search{flex:1;min-width:150px;border:1px solid var(--line);border-radius:8px;
-    padding:7px 11px;font-size:13px;font-family:var(--sans);background:var(--surface2)}
-  .search:focus{outline:none;border-color:var(--accent)}
-  .view-toggle{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
-  .view-toggle button{border:0;background:var(--surface2);padding:6px 13px;font-size:12.5px;
-    cursor:pointer;color:var(--muted);font-family:var(--sans)}
-  .view-toggle button.on{background:var(--ink);color:#fff}
+/* map */
+.map-section{margin-bottom:18px;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;background:var(--surface)}
+.map-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:var(--surface);border-bottom:1px solid var(--line)}
+.map-header span{font-size:13px;font-weight:600;color:var(--ink)}
+.map-header small{font-size:11px;color:var(--faint);margin-left:8px;font-family:var(--mono)}
+.map-toggle-btn{border:1px solid var(--line);background:var(--surface2);border-radius:6px;padding:4px 12px;font-size:12px;cursor:pointer;color:var(--muted);font-family:var(--sans)}
+.map-toggle-btn:hover{color:var(--ink)}
+#nl-map{height:340px;transition:height .25s}
+#nl-map.hidden{height:0;overflow:hidden}
+.city-label{background:rgba(255,255,255,.92);border:1px solid #ccc;border-radius:4px;font-size:11px;padding:2px 6px;font-weight:600;color:#333;white-space:nowrap;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.city-label::before{display:none}
 
-  /* sections (cards view) */
-  .section-head{display:flex;align-items:center;gap:9px;margin:22px 2px 11px}
-  .section-head h2{font-size:14px;font-weight:600;margin:0}
-  .section-head .dot{width:7px;height:7px;border-radius:99px;background:var(--accent)}
-  .section-head .count{font-family:var(--mono);font-size:12px;color:var(--faint)}
-  .section-head .line{flex:1;height:1px;background:var(--line)}
+/* summary */
+.summary{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:9px 13px;min-width:90px}
+.stat .n{font-family:var(--mono);font-size:20px;font-weight:600;line-height:1.1}
+.stat .l{font-size:11px;color:var(--muted);margin-top:1px}
+.stat.hot .n{color:var(--accent)}
+.stat.liked-stat .n{color:var(--like)}
 
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(268px,1fr));gap:11px}
+/* controls */
+.controls{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 13px;margin-bottom:16px}
+.crow{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.crow+.crow{margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
+.fgroup{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.fgroup .cap{font-size:11px;color:var(--faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.04em}
+.chip{font-size:12px;border:1px solid var(--line);background:var(--surface2);color:var(--muted);padding:4px 10px;border-radius:99px;cursor:pointer;transition:.12s;user-select:none;white-space:nowrap}
+.chip:hover{border-color:#bbb}
+.chip.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.search{flex:1;min-width:150px;border:1px solid var(--line);border-radius:8px;padding:7px 11px;font-size:13px;font-family:var(--sans);background:var(--surface2)}
+.search:focus{outline:none;border-color:var(--accent)}
+.ctrl-btn{border:1px solid var(--line);background:var(--surface2);padding:6px 13px;font-size:12.5px;border-radius:8px;cursor:pointer;color:var(--muted);font-family:var(--sans);transition:.12s}
+.ctrl-btn:hover{color:var(--ink)}
+.ctrl-btn.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.view-toggle{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.view-toggle button{border:0;background:var(--surface2);padding:6px 13px;font-size:12.5px;cursor:pointer;color:var(--muted);font-family:var(--sans)}
+.view-toggle button.on{background:var(--ink);color:#fff}
 
-  /* card */
-  .card{position:relative;background:var(--surface);border:1px solid var(--line);
-    border-radius:var(--r);padding:13px 14px 12px;display:flex;flex-direction:column;gap:9px;
-    border-left:3px solid var(--s0)}
-  .card.is-new{box-shadow:0 0 0 1px var(--accent-soft)}
-  .card .new-badge{position:absolute;top:11px;right:12px;font-family:var(--mono);font-size:9.5px;
-    font-weight:700;letter-spacing:.06em;color:#fff;background:var(--accent);
-    padding:2px 6px;border-radius:4px}
-  .card .title{font-size:14px;font-weight:600;line-height:1.35;padding-right:42px}
-  .card .title a{color:var(--ink);text-decoration:none}
-  .card .title a:hover{color:var(--accent)}
-  .meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
-  .tag{font-size:11px;font-family:var(--mono);padding:2px 7px;border-radius:5px;
-    border:1px solid var(--line);color:var(--muted);background:var(--surface2)}
-  .tag.co{font-weight:600;color:var(--ink)}
-  .tag.cat{border-color:#d4e7e0;color:var(--accent);background:var(--accent-soft)}
-  .subrow{display:flex;align-items:center;justify-content:space-between;gap:8px;
-    font-size:11.5px;color:var(--faint);font-family:var(--mono)}
-  .loc{display:flex;align-items:center;gap:4px;min-width:0}
-  .loc span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+/* batch bar */
+.batch-bar{position:fixed;bottom:0;left:0;right:0;background:var(--ink);color:#fff;padding:11px 20px;display:none;align-items:center;gap:10px;z-index:2000;box-shadow:0 -2px 12px rgba(0,0,0,.25);flex-wrap:wrap}
+.batch-bar.show{display:flex}
+.batch-bar .bcount{font-family:var(--mono);font-size:13px;font-weight:600;white-space:nowrap}
+.batch-bar select{background:#fff;color:var(--ink);border:none;border-radius:6px;padding:6px 10px;font-size:13px;font-family:var(--sans);cursor:pointer}
+.batch-bar button{border:none;border-radius:6px;padding:7px 14px;font-size:12.5px;font-family:var(--sans);cursor:pointer;font-weight:600;white-space:nowrap}
+.bapply{background:var(--accent);color:#fff}
+.bselall,.bcancel{background:#3a3f46;color:#fff}
+.blike{background:var(--like);color:#fff}
 
-  /* status selector */
-  .statusbar{display:flex;align-items:center;gap:8px;margin-top:2px;padding-top:9px;border-top:1px solid var(--line)}
-  .statusbar label{font-size:11px;color:var(--faint);font-family:var(--mono)}
-  select.status{flex:1;font-size:12.5px;font-family:var(--sans);border:1px solid var(--line);
-    border-radius:7px;padding:5px 8px;cursor:pointer;font-weight:600;background:var(--surface2)}
-  select.status:focus{outline:none;border-color:var(--accent)}
+/* sections */
+.section-head{display:flex;align-items:center;gap:9px;margin:22px 2px 11px}
+.section-head h2{font-size:14px;font-weight:600;margin:0}
+.section-head .dot{width:7px;height:7px;border-radius:99px}
+.section-head .count{font-family:var(--mono);font-size:12px;color:var(--faint)}
+.section-head .line{flex:1;height:1px;background:var(--line)}
 
-  /* board view */
-  .board{display:grid;grid-template-columns:repeat(6,minmax(168px,1fr));gap:10px;overflow-x:auto;padding-bottom:6px}
-  .col{background:var(--surface2);border:1px solid var(--line);border-radius:var(--r);padding:9px;min-width:168px}
-  .col h3{font-size:12px;margin:0 0 9px;display:flex;align-items:center;justify-content:space-between;font-weight:600}
-  .col h3 .c{font-family:var(--mono);font-size:11px;color:var(--faint);font-weight:400}
-  .col .swatch{width:8px;height:8px;border-radius:2px;display:inline-block;margin-right:6px;vertical-align:middle}
-  .col .card{margin-bottom:9px;padding:10px 11px}
-  .col .card .title{font-size:13px;padding-right:8px}
-  .col .card .new-badge{position:static;align-self:flex-start}
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(272px,1fr));gap:11px}
 
-  .empty{color:var(--faint);font-size:13px;padding:26px 2px;text-align:center;
-    border:1px dashed var(--line);border-radius:var(--r)}
-  .src-note{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:24px;
-    padding-top:12px;border-top:1px solid var(--line)}
-  @media(max-width:680px){.board{grid-template-columns:repeat(6,84vw)}}
+/* card */
+.card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 13px 11px;display:flex;flex-direction:column;gap:7px;border-left:3px solid var(--s0);transition:box-shadow .15s}
+.card.is-new{box-shadow:0 0 0 1.5px var(--accent-soft)}
+.card.selected{outline:2px solid var(--accent);outline-offset:1px}
+.sel-check{position:absolute;top:13px;left:12px;width:17px;height:17px;cursor:pointer;accent-color:var(--accent);display:none}
+.select-mode .sel-check{display:block}
+.select-mode .card{padding-left:37px;cursor:pointer}
+
+/* card top row */
+.card-toprow{display:flex;justify-content:space-between;align-items:center;min-height:22px}
+.like-btn{background:none;border:none;cursor:pointer;font-size:18px;line-height:1;padding:0 1px;color:#ccc;transition:.15s;flex-shrink:0}
+.like-btn.on{color:var(--like)}
+.like-btn:hover{transform:scale(1.2)}
+.new-badge{font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.06em;color:#fff;background:var(--accent);padding:2px 6px;border-radius:4px;flex-shrink:0}
+
+/* card body */
+.card-title{font-size:14px;font-weight:600;line-height:1.35}
+.card-title a{color:var(--ink);text-decoration:none}
+.card-title a:hover{color:var(--accent)}
+.meta{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
+.tag{font-size:11px;font-family:var(--mono);padding:2px 7px;border-radius:5px;border:1px solid var(--line);color:var(--muted);background:var(--surface2)}
+.tag.co{font-weight:600;color:var(--ink)}
+.tag.cat{border-color:#d4e7e0;color:var(--accent);background:var(--accent-soft)}
+
+/* date row */
+.daterow{display:flex;flex-wrap:wrap;gap:6px;font-size:11px;color:var(--faint);font-family:var(--mono)}
+.ditem{display:flex;align-items:center;gap:3px;white-space:nowrap}
+.dl-input{font-family:var(--mono);font-size:11px;border:1px dashed var(--line);border-radius:4px;padding:1px 4px;color:var(--muted);background:transparent;cursor:pointer;width:94px}
+.dl-input:focus{outline:none;border-color:var(--accent);color:var(--ink)}
+.dl-input::-webkit-calendar-picker-indicator{opacity:.5;cursor:pointer;scale:.9}
+
+/* subrow */
+.subrow{display:flex;align-items:center;justify-content:space-between;gap:6px;font-size:11.5px;color:var(--faint);font-family:var(--mono)}
+.loc{display:flex;align-items:center;gap:4px;min-width:0;flex:1}
+.loc span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* status */
+.statusbar{display:flex;align-items:center;gap:8px;margin-top:1px;padding-top:8px;border-top:1px solid var(--line)}
+.statusbar label{font-size:11px;color:var(--faint);font-family:var(--mono);white-space:nowrap}
+select.status{flex:1;font-size:12.5px;font-family:var(--sans);border:1px solid var(--line);border-radius:7px;padding:5px 8px;cursor:pointer;font-weight:600;background:var(--surface2)}
+select.status:focus{outline:none;border-color:var(--accent)}
+
+/* board */
+.board{display:grid;grid-template-columns:repeat(7,minmax(155px,1fr));gap:9px;overflow-x:auto;padding-bottom:6px}
+.col{background:var(--surface2);border:1px solid var(--line);border-radius:var(--r);padding:9px;min-width:155px}
+.col h3{font-size:12px;margin:0 0 8px;display:flex;align-items:center;justify-content:space-between;font-weight:600}
+.col h3 .c{font-family:var(--mono);font-size:11px;color:var(--faint);font-weight:400}
+.swatch{width:8px;height:8px;border-radius:2px;display:inline-block;margin-right:5px;vertical-align:middle}
+.col .card{margin-bottom:8px;padding:9px 10px}
+.col .card .card-title{font-size:13px}
+
+/* liked tab */
+.liked-scope{margin-bottom:30px}
+.liked-scope > h2{font-size:15px;font-weight:600;margin:0 0 12px;padding-bottom:10px;border-bottom:2px solid var(--line)}
+
+/* misc */
+.empty{color:var(--faint);font-size:13px;padding:26px 2px;text-align:center;border:1px dashed var(--line);border-radius:var(--r)}
+.src-note{font-family:var(--mono);font-size:11px;color:var(--faint);margin-top:24px;padding-top:12px;border-top:1px solid var(--line)}
+
+@media(max-width:700px){
+  .board{grid-template-columns:repeat(7,80vw)}
+  .tabs{overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
 </style>
 </head>
 <body>
@@ -126,209 +172,520 @@
     <span class="updated" id="updated"></span>
   </header>
 
-  <div class="summary" id="summary"></div>
+  <nav class="tabs">
+    <button class="tab-btn active" onclick="switchTab('dutch')" id="tbtn-dutch">🇳🇱 Dutch Job Desk</button>
+    <button class="tab-btn" onclick="switchTab('global')" id="tbtn-global">🌍 Global Job Desk</button>
+    <button class="tab-btn" onclick="switchTab('liked')" id="tbtn-liked">❤️ Liked</button>
+  </nav>
 
-  <div class="controls">
-    <div class="crow">
-      <input class="search" id="search" placeholder="搜索标题、公司、地点…">
-      <div class="view-toggle">
-        <button id="vCards" class="on" onclick="setView('cards')">卡片</button>
-        <button id="vBoard" onclick="setView('board')">看板</button>
+  <!-- Dutch tab -->
+  <div id="tab-dutch" class="tab-pane active">
+    <div class="map-section" id="mapSection">
+      <div class="map-header">
+        <div><span>🗺️ 荷兰岗位地图</span><small>显示已收藏 / 申请中的岗位城市</small></div>
+        <button class="map-toggle-btn" onclick="toggleMap()">▲ 收起</button>
+      </div>
+      <div id="nl-map"></div>
+    </div>
+    <div class="summary" id="dutch-summary"></div>
+    <div class="controls">
+      <div class="crow">
+        <input class="search" id="dutch-search" placeholder="搜索标题、公司、地点…">
+        <div class="view-toggle">
+          <button id="dutch-vCards" class="on" onclick="setView('dutch','cards')">卡片</button>
+          <button id="dutch-vBoard" onclick="setView('dutch','board')">看板</button>
+        </div>
+        <button class="ctrl-btn" id="dutch-selbtn" onclick="toggleSelectMode('dutch')">☐ 批量选择</button>
+      </div>
+      <div class="crow"><div class="fgroup" id="dutch-fCompany"></div></div>
+      <div class="crow"><div class="fgroup" id="dutch-fCat"></div></div>
+      <div class="crow">
+        <div class="fgroup" id="dutch-fSeniority"></div>
+        <div class="fgroup" id="dutch-fStatus"></div>
       </div>
     </div>
-    <div class="crow"><div class="fgroup" id="fCompany"></div></div>
-    <div class="crow"><div class="fgroup" id="fCat"></div></div>
-    <div class="crow">
-      <div class="fgroup" id="fSeniority"></div>
-      <div class="fgroup" id="fStatus"></div>
-    </div>
+    <div id="dutch-view"></div>
   </div>
 
-  <div id="view"></div>
+  <!-- Global tab -->
+  <div id="tab-global" class="tab-pane">
+    <div class="summary" id="global-summary"></div>
+    <div class="controls">
+      <div class="crow">
+        <input class="search" id="global-search" placeholder="搜索标题、公司、地点…">
+        <div class="view-toggle">
+          <button id="global-vCards" class="on" onclick="setView('global','cards')">卡片</button>
+          <button id="global-vBoard" onclick="setView('global','board')">看板</button>
+        </div>
+        <button class="ctrl-btn" id="global-selbtn" onclick="toggleSelectMode('global')">☐ 批量选择</button>
+      </div>
+      <div class="crow"><div class="fgroup" id="global-fCompany"></div></div>
+      <div class="crow"><div class="fgroup" id="global-fCat"></div></div>
+      <div class="crow">
+        <div class="fgroup" id="global-fSeniority"></div>
+        <div class="fgroup" id="global-fStatus"></div>
+      </div>
+    </div>
+    <div id="global-view"></div>
+  </div>
+
+  <!-- Liked tab -->
+  <div id="tab-liked" class="tab-pane">
+    <div class="liked-scope">
+      <h2>🇳🇱 Dutch Liked Jobs</h2>
+      <div id="liked-dutch"></div>
+    </div>
+    <div class="liked-scope">
+      <h2>🌍 Global Liked Jobs</h2>
+      <div id="liked-global"></div>
+    </div>
+  </div>
 
   <div class="src-note" id="srcNote"></div>
 </div>
 
+<!-- Batch action bar -->
+<div class="batch-bar" id="batchBar">
+  <span class="bcount" id="batchCount">已选 0 个</span>
+  <button class="bselall" onclick="selectAllVisible()">全选可见</button>
+  <select id="batchStatusSel"></select>
+  <button class="bapply" onclick="applyBatch('status')">✓ 应用状态</button>
+  <button class="blike" onclick="applyBatch('like')">❤️ 批量收藏</button>
+  <button class="bcancel" onclick="clearSelection()">✕ 取消</button>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-/* ---------- application status model (user state, persisted) ---------- */
+/* ── CONSTANTS ── */
 const STATUSES = [
-  {k:"none", label:"未申请",   v:"--s0"},
-  {k:"applied", label:"已申请", v:"--s1"},
-  {k:"assess", label:"测评/笔试", v:"--s2"},
-  {k:"interview", label:"面试", v:"--s3"},
-  {k:"offer", label:"Offer",   v:"--s4"},
-  {k:"closed", label:"已拒/关闭", v:"--s5"},
+  {k:"none",          label:"未申请",    fg:"#6B7280", bg:"#EDEFF1", v:"--s0", mapShow:false},
+  {k:"applied",       label:"已申请",    fg:"#2563A8", bg:"#E7EFF8", v:"--s1", mapShow:true},
+  {k:"assess",        label:"测评/笔试", fg:"#A56A00", bg:"#FAF0DB", v:"--s2", mapShow:true},
+  {k:"interview",     label:"面试",      fg:"#6D45B8", bg:"#EFEAF8", v:"--s3", mapShow:true},
+  {k:"offer",         label:"Offer",    fg:"#2F7D2F", bg:"#E7F2E3", v:"--s4", mapShow:true},
+  {k:"rejected",      label:"已拒/关闭", fg:"#B23B3B", bg:"#FBEAEA", v:"--s5", mapShow:false},
+  {k:"notinterested", label:"不想要",   fg:"#7C6F5E", bg:"#F0EDE8", v:"--s6", mapShow:false},
 ];
-const SMAP = Object.fromEntries(STATUSES.map((s,i)=>[s.k,{...s,i}]));
+const SMAP = Object.fromEntries(STATUSES.map(s => [s.k, s]));
 
-/* ---------- persistence via artifact window.storage (single key) ---------- */
-const KEY="jobdesk_state_v1";
-let STATE={statuses:{}};
-const hasStore = (typeof window!=="undefined" && window.storage && window.storage.get);
-async function loadState(){
-  if(!hasStore) return;
-  try{ const r=await window.storage.get(KEY); if(r&&r.value){ STATE=JSON.parse(r.value);} }catch(e){/* first run */}
+const CITY_COORDS = {
+  amsterdam:[52.3676,4.9041], rotterdam:[51.9244,4.4777],
+  veldhoven:[51.4087,5.4061], eindhoven:[51.4416,5.4697],
+  utrecht:[52.0907,5.1214],   "den haag":[52.0705,4.3007],
+  "the hague":[52.0705,4.3007], delft:[52.0116,4.3571],
+  leiden:[52.1601,4.4970],    haarlem:[52.3874,4.6462],
+  groningen:[53.2194,6.5665], maastricht:[50.8514,5.6910],
+  breda:[51.5719,4.7683],     tilburg:[51.5655,5.0913],
+  nijmegen:[51.8426,5.8516],  enschede:[52.2215,6.8937],
+  arnhem:[51.9851,5.8987],    apeldoorn:[52.2112,5.9699],
+};
+const MAP_PRIORITY = ['offer','interview','assess','applied'];
+const MAP_COLORS   = {offer:'#2F7D2F',interview:'#6D45B8',assess:'#A56A00',applied:'#2563A8',liked:'#E85D04'};
+
+/* ── STATE ── */
+const SK = "jobdesk_v3";
+let STATE = {statuses:{}, likes:{}, deadlines:{}};
+const hasStore = typeof window !== "undefined" && window.storage && window.storage.get;
+
+async function loadState() {
+  if (!hasStore) return;
+  try { const r = await window.storage.get(SK); if (r?.value) STATE = {...STATE,...JSON.parse(r.value)}; } catch(e){}
 }
-let saveT;
-function saveState(){
-  if(!hasStore) return;
-  clearTimeout(saveT);
-  saveT=setTimeout(()=>{ try{ window.storage.set(KEY, JSON.stringify(STATE)); }catch(e){} },150);
-}
-const getStatus=id=>STATE.statuses[id]||"none";
-function setStatus(id,k){ STATE.statuses[id]=k; saveState(); render(); }
-
-/* ---------- data: load ./data.json (pipeline output) else embedded sample ---------- */
-const SAMPLE_DATA = {"generated_at":"2026-06-11","jobs":[{"id":"imc-quant-trader-grad","company":"IMC","company_category":"自营交易","title":"Quantitative Trader — Graduate 2026","job_category":"Quant","seniority":"Graduate","location":"Amsterdam, NL","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-06-09","last_seen":"2026-06-11","is_open":true},{"id":"imc-quant-research-intern","company":"IMC","company_category":"自营交易","title":"Quantitative Research Internship","job_category":"Quant","seniority":"Intern","location":"Amsterdam, NL","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-06-10","last_seen":"2026-06-11","is_open":true},{"id":"imc-swe-cpp","company":"IMC","company_category":"自营交易","title":"Software Engineer — C++ (Low Latency)","job_category":"SWE","seniority":"Experienced","location":"Amsterdam, NL","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-05-21","last_seen":"2026-06-11","is_open":true},{"id":"imc-fpga","company":"IMC","company_category":"自营交易","title":"FPGA Engineer","job_category":"SWE","seniority":"Experienced","location":"Sydney, AU","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-05-14","last_seen":"2026-06-11","is_open":true},{"id":"optiver-grad-trader","company":"Optiver","company_category":"自营交易","title":"Graduate Trader 2026","job_category":"Trading","seniority":"Graduate","location":"Amsterdam, NL","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-06-08","last_seen":"2026-06-11","is_open":true},{"id":"optiver-quant-researcher","company":"Optiver","company_category":"自营交易","title":"Quantitative Researcher","job_category":"Quant","seniority":"Experienced","location":"Amsterdam, NL","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-05-19","last_seen":"2026-06-11","is_open":true},{"id":"optiver-swe-ll","company":"Optiver","company_category":"自营交易","title":"Software Engineer — Low Latency","job_category":"SWE","seniority":"Experienced","location":"London, UK","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-05-27","last_seen":"2026-06-11","is_open":true},{"id":"optiver-risk-analyst","company":"Optiver","company_category":"自营交易","title":"Market Risk Analyst","job_category":"Risk","seniority":"Experienced","location":"Amsterdam, NL","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-05-12","last_seen":"2026-06-11","is_open":true},{"id":"asml-data-scientist","company":"ASML","company_category":"科技/半导体","title":"Data Scientist — Yield","job_category":"Data","seniority":"Experienced","location":"Veldhoven, NL","url":"https://www.asml.com/en/careers/find-a-job","first_seen":"2026-06-10","last_seen":"2026-06-11","is_open":true},{"id":"asml-ml-intern","company":"ASML","company_category":"科技/半导体","title":"Machine Learning Engineer Internship","job_category":"Data","seniority":"Intern","location":"Veldhoven, NL","url":"https://www.asml.com/en/careers/find-a-job","first_seen":"2026-05-30","last_seen":"2026-06-11","is_open":true},{"id":"asml-swe-litho","company":"ASML","company_category":"科技/半导体","title":"Software Engineer — Computational Lithography","job_category":"SWE","seniority":"Experienced","location":"Veldhoven, NL","url":"https://www.asml.com/en/careers/find-a-job","first_seen":"2026-05-16","last_seen":"2026-06-11","is_open":true},{"id":"robeco-quant-fi","company":"Robeco","company_category":"资产管理","title":"Quantitative Researcher — Fixed Income","job_category":"Quant","seniority":"Experienced","location":"Rotterdam, NL","url":"https://www.robeco.com/en-int/careers","first_seen":"2026-06-09","last_seen":"2026-06-11","is_open":true},{"id":"robeco-investment-analyst","company":"Robeco","company_category":"资产管理","title":"Investment Analyst — Sustainable Investing","job_category":"Finance","seniority":"Experienced","location":"Rotterdam, NL","url":"https://www.robeco.com/en-int/careers","first_seen":"2026-05-23","last_seen":"2026-06-11","is_open":true},{"id":"robeco-risk-manager","company":"Robeco","company_category":"资产管理","title":"Risk Manager — Investment Risk","job_category":"Risk","seniority":"Experienced","location":"Rotterdam, NL","url":"https://www.robeco.com/en-int/careers","first_seen":"2026-05-18","last_seen":"2026-06-11","is_open":true}]};
-let JOBS=[], GENERATED_AT="";
-async function loadData(){
-  try{
-    const res=await fetch("./data.json",{cache:"no-store"});
-    if(res.ok){ const d=await res.json(); JOBS=d.jobs||d; GENERATED_AT=d.generated_at||""; return "live"; }
-  }catch(e){}
-  JOBS=SAMPLE_DATA.jobs; GENERATED_AT=SAMPLE_DATA.generated_at; return "sample";
+let _saveT;
+function saveState() {
+  if (!hasStore) return;
+  clearTimeout(_saveT);
+  _saveT = setTimeout(() => { try { window.storage.set(SK, JSON.stringify(STATE)); } catch(e){} }, 150);
 }
 
-/* ---------- new-vs-archive logic (7-day window) ---------- */
-const NOW=new Date("2026-06-11T09:00:00");
-const NEW_DAYS=7;
-function isNew(j){ const d=(NOW-new Date(j.first_seen))/86400000; return d>=0 && d<NEW_DAYS; }
-function daysOpen(j){ return Math.max(0,Math.round((NOW-new Date(j.first_seen))/86400000)); }
+const getStatus  = id => STATE.statuses[id] || "none";
+const isLiked    = id => !!STATE.likes[id];
+const getDeadline= id => STATE.deadlines[id] || "";
 
-/* ---------- filters ---------- */
-let FILT={company:new Set(),cat:new Set(),seniority:new Set(),status:new Set(),q:"",view:"cards"};
-function uniq(key){ return [...new Set(JOBS.map(j=>j[key]))].filter(Boolean).sort(); }
+function setStatus(id, k)   { STATE.statuses[id]=k; saveState(); renderAll(); }
+function toggleLike(id)     { STATE.likes[id]=!STATE.likes[id]; if(!STATE.likes[id]) delete STATE.likes[id]; saveState(); renderAll(); }
+function setDeadline(id, v) { if(v) STATE.deadlines[id]=v; else delete STATE.deadlines[id]; saveState(); }
 
-function buildChips(){
-  const mk=(host,vals,setName)=>{
-    host.innerHTML="";
-    const cap=document.createElement("span"); cap.className="cap";
-    cap.textContent={fCompany:"公司类别",fCat:"岗位类别",fSeniority:"资历"}[host.id]||"";
+/* ── FILTER STATE ── */
+function mkFilt() { return {company:new Set(),cat:new Set(),seniority:new Set(),status:new Set(),q:"",view:"cards",selectMode:false,selected:new Set()}; }
+const FILT = {dutch:mkFilt(), global:mkFilt()};
+let ACTIVE_TAB = 'dutch';
+
+/* ── DATA ── */
+const SAMPLE = {"generated_at":"2026-06-11","jobs":[{"id":"imc-quant-trader-grad","company":"IMC","company_category":"自营交易","title":"Quantitative Trader — Graduate 2026","job_category":"Quant","seniority":"Graduate","location":"Amsterdam, NL","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-06-09","last_seen":"2026-06-11","is_open":true},{"id":"imc-quant-research-intern","company":"IMC","company_category":"自营交易","title":"Quantitative Research Internship","job_category":"Quant","seniority":"Intern","location":"Amsterdam, NL","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-06-10","last_seen":"2026-06-11","is_open":true},{"id":"imc-swe-cpp","company":"IMC","company_category":"自营交易","title":"Software Engineer — C++ (Low Latency)","job_category":"SWE","seniority":"Experienced","location":"Amsterdam, NL","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-05-21","last_seen":"2026-06-11","is_open":true},{"id":"imc-fpga","company":"IMC","company_category":"自营交易","title":"FPGA Engineer","job_category":"SWE","seniority":"Experienced","location":"Sydney, AU","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-05-14","last_seen":"2026-06-11","is_open":true},{"id":"optiver-grad-trader","company":"Optiver","company_category":"自营交易","title":"Graduate Trader 2026","job_category":"Trading","seniority":"Graduate","location":"Amsterdam, NL","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-06-08","last_seen":"2026-06-11","is_open":true},{"id":"optiver-quant-researcher","company":"Optiver","company_category":"自营交易","title":"Quantitative Researcher","job_category":"Quant","seniority":"Experienced","location":"Amsterdam, NL","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-05-19","last_seen":"2026-06-11","is_open":true},{"id":"optiver-swe-ll","company":"Optiver","company_category":"自营交易","title":"Software Engineer — Low Latency","job_category":"SWE","seniority":"Experienced","location":"London, UK","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-05-27","last_seen":"2026-06-11","is_open":true},{"id":"optiver-risk-analyst","company":"Optiver","company_category":"自营交易","title":"Market Risk Analyst","job_category":"Risk","seniority":"Experienced","location":"Amsterdam, NL","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-05-12","last_seen":"2026-06-11","is_open":true},{"id":"asml-data-scientist","company":"ASML","company_category":"科技/半导体","title":"Data Scientist — Yield","job_category":"Data","seniority":"Experienced","location":"Veldhoven, NL","url":"https://www.asml.com/en/careers/find-a-job","first_seen":"2026-06-10","last_seen":"2026-06-11","is_open":true},{"id":"asml-ml-intern","company":"ASML","company_category":"科技/半导体","title":"Machine Learning Engineer Internship","job_category":"Data","seniority":"Intern","location":"Veldhoven, NL","url":"https://www.asml.com/en/careers/find-a-job","first_seen":"2026-05-30","last_seen":"2026-06-11","is_open":true},{"id":"asml-swe-litho","company":"ASML","company_category":"科技/半导体","title":"Software Engineer — Computational Lithography","job_category":"SWE","seniority":"Experienced","location":"Veldhoven, NL","url":"https://www.asml.com/en/careers/find-a-job","first_seen":"2026-05-16","last_seen":"2026-06-11","is_open":true},{"id":"robeco-quant-fi","company":"Robeco","company_category":"资产管理","title":"Quantitative Researcher — Fixed Income","job_category":"Quant","seniority":"Experienced","location":"Rotterdam, NL","url":"https://www.robeco.com/en-int/careers","first_seen":"2026-06-09","last_seen":"2026-06-11","is_open":true},{"id":"robeco-investment-analyst","company":"Robeco","company_category":"资产管理","title":"Investment Analyst — Sustainable Investing","job_category":"Finance","seniority":"Experienced","location":"Rotterdam, NL","url":"https://www.robeco.com/en-int/careers","first_seen":"2026-05-23","last_seen":"2026-06-11","is_open":true},{"id":"robeco-risk-manager","company":"Robeco","company_category":"资产管理","title":"Risk Manager — Investment Risk","job_category":"Risk","seniority":"Experienced","location":"Rotterdam, NL","url":"https://www.robeco.com/en-int/careers","first_seen":"2026-05-18","last_seen":"2026-06-11","is_open":true}]};
+
+let JOBS=[], GEN_AT="";
+async function loadData() {
+  try {
+    const res = await fetch("./data.json",{cache:"no-store"});
+    if (res.ok) { const d=await res.json(); JOBS=d.jobs||[]; GEN_AT=d.generated_at||""; return "live"; }
+  } catch(e){}
+  JOBS=SAMPLE.jobs; GEN_AT=SAMPLE.generated_at; return "sample";
+}
+
+/* ── JOB HELPERS ── */
+const NL_HINTS = [', nl','netherlands','nederland','amsterdam','rotterdam','veldhoven',
+  'eindhoven','utrecht','den haag','the hague','delft','leiden','haarlem','groningen',
+  'maastricht','breda','tilburg','nijmegen','enschede','arnhem','apeldoorn'];
+
+function isDutch(j) { const l=(j.location||'').toLowerCase(); return NL_HINTS.some(h=>l.includes(h)); }
+function openJobs()  { return JOBS.filter(j=>j.is_open!==false); }
+function dutchJobs() { return openJobs().filter(isDutch); }
+function scopeJobs(s){ return s==='dutch' ? dutchJobs() : openJobs(); }
+
+const NOW = new Date();
+function isNew(j)    { return (NOW-new Date(j.first_seen))/864e5 < 7; }
+function daysOpen(j) { return Math.max(0,Math.round((NOW-new Date(j.first_seen))/864e5)); }
+function fmtDate(iso){ if(!iso) return ""; const d=new Date(iso); return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`; }
+
+/* ── MAP ── */
+let MAP, mapOpen=true, _mapMarkers=[];
+
+function initMap() {
+  if (typeof L === 'undefined') return;
+  MAP = L.map('nl-map',{center:[52.2,5.1],zoom:7,zoomControl:true});
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+    attribution:'© OpenStreetMap',maxZoom:14
+  }).addTo(MAP);
+}
+
+function extractCity(loc) {
+  const l=(loc||'').toLowerCase();
+  for (const c of ['den haag','the hague']) { if(l.includes(c)) return 'den haag'; }
+  for (const c of Object.keys(CITY_COORDS)) {
+    if(c==='den haag'||c==='the hague') continue;
+    if(l.includes(c)) return c;
+  }
+  return null;
+}
+
+function updateMap() {
+  if (!MAP) return;
+  _mapMarkers.forEach(m=>MAP.removeLayer(m));
+  _mapMarkers=[];
+
+  const byCity={};
+  dutchJobs().forEach(j=>{
+    const st=getStatus(j.id), liked=isLiked(j.id);
+    if(!SMAP[st]?.mapShow && !liked) return;
+    const city=extractCity(j.location);
+    if(!city || !CITY_COORDS[city]) return;
+    (byCity[city]=byCity[city]||[]).push(j);
+  });
+
+  Object.entries(byCity).forEach(([city,jobs])=>{
+    const coords=CITY_COORDS[city];
+    let color=MAP_COLORS.liked;
+    for(const sk of MAP_PRIORITY){ if(jobs.some(j=>getStatus(j.id)===sk)){color=MAP_COLORS[sk];break;} }
+
+    const popup=jobs.map(j=>{
+      const s=SMAP[getStatus(j.id)];
+      const badge=s.k!=='none'?`<span style="font-size:10px;background:${s.bg};color:${s.fg};padding:1px 5px;border-radius:3px;margin-left:4px">${s.label}</span>`:'';
+      return `<div style="margin:5px 0;font-size:12px;font-family:-apple-system,sans-serif">
+        ${isLiked(j.id)?'<span style="color:#E85D04">❤ </span>':''}
+        <a href="${j.url}" target="_blank" style="color:#0E6F58;font-weight:600;text-decoration:none">${j.title}</a>
+        <span style="color:#888;font-size:11px;margin-left:4px">${j.company}</span>${badge}</div>`;
+    }).join('');
+
+    const name=city.replace(/\b\w/g,c=>c.toUpperCase());
+    const m=L.circleMarker(coords,{
+      radius:10+Math.min(jobs.length*2,8),
+      fillColor:color,color:'#fff',weight:2,fillOpacity:.85
+    });
+    m.bindPopup(`<div style="min-width:210px"><b style="font-size:13px">${name}</b>${popup}</div>`,{maxWidth:320});
+    m.bindTooltip(`${name} (${jobs.length})`,{permanent:true,direction:'right',className:'city-label',offset:[12,0]});
+    m.addTo(MAP);
+    _mapMarkers.push(m);
+  });
+}
+
+function toggleMap() {
+  mapOpen=!mapOpen;
+  document.getElementById('nl-map').classList.toggle('hidden',!mapOpen);
+  document.querySelector('.map-toggle-btn').textContent=mapOpen?'▲ 收起':'▼ 展开';
+  if(mapOpen && MAP) setTimeout(()=>MAP.invalidateSize(),260);
+}
+
+/* ── TABS ── */
+function switchTab(tab) {
+  ACTIVE_TAB=tab;
+  ['dutch','global','liked'].forEach(t=>{
+    document.getElementById('tbtn-'+t).classList.toggle('active',t===tab);
+    document.getElementById('tab-'+t).classList.toggle('active',t===tab);
+  });
+  if(tab==='dutch'&&MAP) setTimeout(()=>MAP.invalidateSize(),100);
+  syncBatchBar();
+}
+
+/* ── BATCH SELECTION ── */
+function toggleSelectMode(scope) {
+  const f=FILT[scope];
+  f.selectMode=!f.selectMode;
+  if(!f.selectMode) f.selected.clear();
+  document.getElementById(scope+'-selbtn').classList.toggle('on',f.selectMode);
+  renderView(scope);
+  syncBatchBar();
+}
+
+function toggleSelect(scope,id) {
+  const f=FILT[scope];
+  f.selected.has(id)?f.selected.delete(id):f.selected.add(id);
+  const card=document.querySelector(`.card[data-id="${CSS.escape(id)}"]`);
+  if(card){
+    card.classList.toggle('selected',f.selected.has(id));
+    const cb=card.querySelector('.sel-check'); if(cb) cb.checked=f.selected.has(id);
+  }
+  syncBatchBar();
+}
+
+function syncBatchBar() {
+  const scope=ACTIVE_TAB==='liked'?null:ACTIVE_TAB;
+  const f=scope?FILT[scope]:null;
+  const bar=document.getElementById('batchBar');
+  if(!f||!f.selectMode||f.selected.size===0){bar.classList.remove('show');return;}
+  bar.classList.add('show');
+  document.getElementById('batchCount').textContent=`已选 ${f.selected.size} 个`;
+}
+
+function selectAllVisible() {
+  const scope=ACTIVE_TAB==='liked'?null:ACTIVE_TAB; if(!scope) return;
+  const f=FILT[scope];
+  scopeJobs(scope).filter(j=>passes(j,scope)).forEach(j=>f.selected.add(j.id));
+  syncBatchBar(); renderView(scope);
+}
+
+function applyBatch(action) {
+  const scope=ACTIVE_TAB==='liked'?null:ACTIVE_TAB; if(!scope) return;
+  const f=FILT[scope];
+  if(action==='status') {
+    const k=document.getElementById('batchStatusSel').value;
+    f.selected.forEach(id=>{ STATE.statuses[id]=k; });
+  } else {
+    f.selected.forEach(id=>{ STATE.likes[id]=true; });
+  }
+  saveState();
+  f.selected.clear(); f.selectMode=false;
+  document.getElementById(scope+'-selbtn').classList.remove('on');
+  document.getElementById('batchBar').classList.remove('show');
+  renderAll();
+}
+
+function clearSelection() {
+  const scope=ACTIVE_TAB==='liked'?null:ACTIVE_TAB; if(!scope) return;
+  const f=FILT[scope];
+  f.selected.clear(); f.selectMode=false;
+  document.getElementById(scope+'-selbtn').classList.remove('on');
+  document.getElementById('batchBar').classList.remove('show');
+  renderView(scope);
+}
+
+/* ── FILTERS ── */
+function passes(j,scope) {
+  const f=FILT[scope];
+  if(f.company.size&&!f.company.has(j.company_category)) return false;
+  if(f.cat.size&&!f.cat.has(j.job_category)) return false;
+  if(f.seniority.size&&!f.seniority.has(j.seniority)) return false;
+  if(f.status.size&&!f.status.has(getStatus(j.id))) return false;
+  if(f.q){const s=(j.title+' '+j.company+' '+j.location).toLowerCase();if(!s.includes(f.q)) return false;}
+  return true;
+}
+function uniq(jobs,key){return[...new Set(jobs.map(j=>j[key]))].filter(Boolean).sort();}
+
+function buildChips(scope) {
+  const jobs=scopeJobs(scope);
+  const mk=(elId,vals,setKey,labels)=>{
+    const host=document.getElementById(scope+'-'+elId); host.innerHTML='';
+    const cap=document.createElement('span'); cap.className='cap';
+    cap.textContent={fCompany:'公司类别',fCat:'岗位类别',fSeniority:'资历',fStatus:'申请状态'}[elId]||'';
     host.appendChild(cap);
-    vals.forEach(v=>{
-      const c=document.createElement("span"); c.className="chip"; c.textContent=v;
-      c.onclick=()=>{ FILT[setName].has(v)?FILT[setName].delete(v):FILT[setName].add(v); c.classList.toggle("on"); render(); };
+    vals.forEach((v,i)=>{
+      const label=labels?labels[i]:v;
+      const c=document.createElement('span'); c.className='chip'; c.textContent=label;
+      c.onclick=()=>{ FILT[scope][setKey].has(v)?FILT[scope][setKey].delete(v):FILT[scope][setKey].add(v); c.classList.toggle('on'); renderView(scope); };
       host.appendChild(c);
     });
   };
-  mk(document.getElementById("fCompany"),uniq("company_category"),"company");
-  mk(document.getElementById("fCat"),uniq("job_category"),"cat");
-  mk(document.getElementById("fSeniority"),uniq("seniority"),"seniority");
-  // status filter chips
-  const sh=document.getElementById("fStatus"); sh.innerHTML="";
-  const cap=document.createElement("span"); cap.className="cap"; cap.textContent="申请状态"; sh.appendChild(cap);
-  STATUSES.forEach(s=>{
-    const c=document.createElement("span"); c.className="chip"; c.textContent=s.label;
-    c.onclick=()=>{ FILT.status.has(s.k)?FILT.status.delete(s.k):FILT.status.add(s.k); c.classList.toggle("on"); render(); };
-    sh.appendChild(c);
-  });
-}
-function passes(j){
-  if(FILT.company.size && !FILT.company.has(j.company_category)) return false;
-  if(FILT.cat.size && !FILT.cat.has(j.job_category)) return false;
-  if(FILT.seniority.size && !FILT.seniority.has(j.seniority)) return false;
-  if(FILT.status.size && !FILT.status.has(getStatus(j.id))) return false;
-  if(FILT.q){ const s=(j.title+" "+j.company+" "+j.location).toLowerCase(); if(!s.includes(FILT.q)) return false; }
-  return true;
+  mk('fCompany',uniq(jobs,'company_category'),'company');
+  mk('fCat',uniq(jobs,'job_category'),'cat');
+  mk('fSeniority',uniq(jobs,'seniority'),'seniority');
+  mk('fStatus',STATUSES.map(s=>s.k),'status',STATUSES.map(s=>s.label));
 }
 
-/* ---------- rendering ---------- */
-function cardEl(j){
+/* ── CARD ── */
+function makeCard(j, scope) {
   const st=SMAP[getStatus(j.id)];
-  const el=document.createElement("div"); el.className="card"+(isNew(j)?" is-new":"");
+  const liked=isLiked(j.id);
+  const f=scope?FILT[scope]:null;
+  const selected=f?.selected?.has(j.id)||false;
+
+  const el=document.createElement('div');
+  el.className='card'+(isNew(j)?' is-new':'')+(selected?' selected':'');
+  el.dataset.id=j.id;
   el.style.borderLeftColor=`var(${st.v})`;
-  const opts=STATUSES.map(s=>`<option value="${s.k}" ${s.k===st.k?"selected":""}>${s.label}</option>`).join("");
-  el.innerHTML=`
-    ${isNew(j)?'<span class="new-badge">NEW</span>':''}
-    <div class="title"><a href="${j.url}" target="_blank" rel="noopener">${j.title}</a></div>
-    <div class="meta">
-      <span class="tag co">${j.company}</span>
-      <span class="tag cat">${j.job_category}</span>
-      <span class="tag">${j.seniority}</span>
-    </div>
-    <div class="subrow">
-      <span class="loc">📍 <span>${j.location}</span></span>
-      <span>${isNew(j)?"今天/本周":daysOpen(j)+"天前"}</span>
-    </div>
-    <div class="statusbar">
-      <label>状态</label>
-      <select class="status" style="color:var(${st.v});border-color:var(${st.v})">${opts}</select>
-    </div>`;
-  el.querySelector("select").onchange=e=>setStatus(j.id,e.target.value);
+
+  // checkbox
+  const cb=document.createElement('input'); cb.type='checkbox'; cb.className='sel-check'; cb.checked=selected;
+  cb.onchange=e=>{e.stopPropagation();if(scope)toggleSelect(scope,j.id);};
+  el.appendChild(cb);
+
+  // top row
+  const toprow=document.createElement('div'); toprow.className='card-toprow';
+  const lb=document.createElement('button'); lb.className='like-btn'+(liked?' on':'');
+  lb.innerHTML=liked?'♥':'♡'; lb.title=liked?'取消收藏':'收藏';
+  lb.onclick=e=>{e.stopPropagation();toggleLike(j.id);};
+  toprow.appendChild(lb);
+  if(isNew(j)){const nb=document.createElement('span');nb.className='new-badge';nb.textContent='NEW';toprow.appendChild(nb);}
+  else toprow.appendChild(document.createElement('span'));
+  el.appendChild(toprow);
+
+  // title
+  const titleDiv=document.createElement('div'); titleDiv.className='card-title';
+  titleDiv.innerHTML=`<a href="${j.url}" target="_blank" rel="noopener">${j.title}</a>`;
+  el.appendChild(titleDiv);
+
+  // meta
+  const meta=document.createElement('div'); meta.className='meta';
+  meta.innerHTML=`<span class="tag co">${j.company}</span><span class="tag cat">${j.job_category}</span><span class="tag">${j.seniority}</span>`;
+  el.appendChild(meta);
+
+  // dates
+  const daterow=document.createElement('div'); daterow.className='daterow';
+  let dhtml=`<span class="ditem">🗓 首见 ${fmtDate(j.first_seen)}</span>`;
+  if(j.posted_at&&j.posted_at!==j.first_seen) dhtml+=`<span class="ditem">📢 发布 ${fmtDate(j.posted_at)}</span>`;
+  daterow.innerHTML=dhtml;
+  const dlSpan=document.createElement('span'); dlSpan.className='ditem'; dlSpan.textContent='⏰ 截止 ';
+  const dlIn=document.createElement('input'); dlIn.type='date'; dlIn.className='dl-input';
+  dlIn.value=getDeadline(j.id); dlIn.title='设置截止日期（手动）';
+  dlIn.onclick=e=>e.stopPropagation();
+  dlIn.onchange=e=>setDeadline(j.id,e.target.value);
+  dlSpan.appendChild(dlIn); daterow.appendChild(dlSpan);
+  el.appendChild(daterow);
+
+  // location + days
+  const sub=document.createElement('div'); sub.className='subrow';
+  sub.innerHTML=`<span class="loc">📍 <span>${j.location||'—'}</span></span><span>${daysOpen(j)===0?'今天':daysOpen(j)+'天前'}</span>`;
+  el.appendChild(sub);
+
+  // status
+  const sbar=document.createElement('div'); sbar.className='statusbar';
+  const opts=STATUSES.map(s=>`<option value="${s.k}"${s.k===st.k?' selected':''}>${s.label}</option>`).join('');
+  sbar.innerHTML=`<label>状态</label><select class="status" style="color:${st.fg};border-color:${st.fg}">${opts}</select>`;
+  sbar.querySelector('select').onchange=e=>{e.stopPropagation();setStatus(j.id,e.target.value);};
+  el.appendChild(sbar);
+
+  // click to select
+  el.onclick=e=>{
+    if(!scope||!FILT[scope].selectMode) return;
+    if(['SELECT','INPUT','A','BUTTON'].includes(e.target.tagName)) return;
+    toggleSelect(scope,j.id);
+  };
   return el;
 }
 
-function sectionEl(title,jobs,dotColor){
-  const wrap=document.createElement("div");
-  const h=document.createElement("div"); h.className="section-head";
-  h.innerHTML=`<span class="dot" style="background:${dotColor}"></span><h2>${title}</h2>
-    <span class="count">${jobs.length}</span><span class="line"></span>`;
+/* ── SECTIONS & VIEWS ── */
+function makeSection(title,jobs,dotColor,scope){
+  const wrap=document.createElement('div');
+  const h=document.createElement('div'); h.className='section-head';
+  h.innerHTML=`<span class="dot" style="background:${dotColor}"></span><h2>${title}</h2><span class="count">${jobs.length}</span><span class="line"></span>`;
   wrap.appendChild(h);
-  if(!jobs.length){ const e=document.createElement("div"); e.className="empty"; e.textContent="没有符合当前筛选的岗位。"; wrap.appendChild(e); return wrap; }
-  const g=document.createElement("div"); g.className="grid";
-  jobs.forEach(j=>g.appendChild(cardEl(j)));
-  wrap.appendChild(g);
-  return wrap;
+  if(!jobs.length){const e=document.createElement('div');e.className='empty';e.textContent='没有符合当前筛选的岗位。';wrap.appendChild(e);return wrap;}
+  const g=document.createElement('div'); g.className='grid';
+  jobs.forEach(j=>g.appendChild(makeCard(j,scope)));
+  wrap.appendChild(g); return wrap;
 }
 
-function renderCards(host,open){
-  const vis=open.filter(passes);
-  const fresh=vis.filter(isNew), arch=vis.filter(j=>!isNew(j));
-  host.appendChild(sectionEl("本周新增",fresh,"var(--accent)"));
-  host.appendChild(sectionEl("仍在招 · 存档",arch,"#9aa0a6"));
+function renderCards(host,jobs,scope){
+  const vis=jobs.filter(j=>passes(j,scope));
+  host.appendChild(makeSection('本周新增',vis.filter(isNew),'var(--accent)',scope));
+  host.appendChild(makeSection('仍在招 · 存档',vis.filter(j=>!isNew(j)),'#9aa0a6',scope));
 }
-function renderBoard(host,open){
-  const vis=open.filter(passes);
-  const board=document.createElement("div"); board.className="board";
+
+function renderBoard(host,jobs,scope){
+  const vis=jobs.filter(j=>passes(j,scope));
+  const board=document.createElement('div'); board.className='board';
   STATUSES.forEach(s=>{
-    const col=document.createElement("div"); col.className="col";
+    const col=document.createElement('div'); col.className='col';
     const items=vis.filter(j=>getStatus(j.id)===s.k);
-    col.innerHTML=`<h3><span><span class="swatch" style="background:var(${s.v})"></span>${s.label}</span><span class="c">${items.length}</span></h3>`;
-    items.forEach(j=>col.appendChild(cardEl(j)));
+    col.innerHTML=`<h3><span><span class="swatch" style="background:${s.fg}"></span>${s.label}</span><span class="c">${items.length}</span></h3>`;
+    items.forEach(j=>col.appendChild(makeCard(j,scope)));
     board.appendChild(col);
   });
   host.appendChild(board);
 }
 
-function renderSummary(open){
-  const fresh=open.filter(isNew).length;
-  const inProg=open.filter(j=>["applied","assess","interview"].includes(getStatus(j.id))).length;
-  const offers=open.filter(j=>getStatus(j.id)==="offer").length;
-  const data=[
-    {n:open.length,l:"在招岗位",hot:false},
-    {n:fresh,l:"本周新增",hot:true},
-    {n:inProg,l:"进行中",hot:false},
-    {n:offers,l:"Offer",hot:false},
+function renderView(scope){
+  const host=document.getElementById(scope+'-view');
+  host.innerHTML='';
+  const f=FILT[scope];
+  host.classList.toggle('select-mode',f.selectMode);
+  const jobs=scopeJobs(scope);
+  f.view==='cards'?renderCards(host,jobs,scope):renderBoard(host,jobs,scope);
+}
+
+function renderSummary(scope){
+  const jobs=scopeJobs(scope);
+  const stats=[
+    {n:jobs.length,l:'在招岗位'},
+    {n:jobs.filter(isNew).length,l:'本周新增',hot:true},
+    {n:jobs.filter(j=>isLiked(j.id)).length,l:'已收藏',cls:'liked-stat'},
+    {n:jobs.filter(j=>['applied','assess','interview'].includes(getStatus(j.id))).length,l:'进行中'},
+    {n:jobs.filter(j=>getStatus(j.id)==='offer').length,l:'Offer'},
   ];
-  document.getElementById("summary").innerHTML=data.map(d=>
-    `<div class="stat${d.hot?' hot':''}"><div class="n">${d.n}</div><div class="l">${d.l}</div></div>`).join("");
+  document.getElementById(scope+'-summary').innerHTML=stats.map(d=>
+    `<div class="stat${d.hot?' hot':''}${d.cls?' '+d.cls:''}"><div class="n">${d.n}</div><div class="l">${d.l}</div></div>`).join('');
 }
 
-function render(){
-  const open=JOBS.filter(j=>j.is_open!==false);
-  renderSummary(open);
-  const host=document.getElementById("view"); host.innerHTML="";
-  if(FILT.view==="cards") renderCards(host,open); else renderBoard(host,open);
+function renderLiked(){
+  const dl=dutchJobs().filter(j=>isLiked(j.id));
+  const dh=document.getElementById('liked-dutch'); dh.innerHTML='';
+  if(!dl.length){dh.innerHTML='<div class="empty">暂无收藏的荷兰岗位，在卡片左上角点击 ♡ 收藏。</div>';}
+  else{const g=document.createElement('div');g.className='grid';dl.forEach(j=>g.appendChild(makeCard(j,null)));dh.appendChild(g);}
+
+  const gl=openJobs().filter(j=>isLiked(j.id)&&!isDutch(j));
+  const gh=document.getElementById('liked-global'); gh.innerHTML='';
+  if(!gl.length){gh.innerHTML='<div class="empty">暂无收藏的海外岗位。</div>';}
+  else{const g=document.createElement('div');g.className='grid';gl.forEach(j=>g.appendChild(makeCard(j,null)));gh.appendChild(g);}
+
+  const total=dl.length+gl.length;
+  document.getElementById('tbtn-liked').textContent=total?`❤️ Liked (${total})`:'❤️ Liked';
 }
 
-function setView(v){
-  FILT.view=v;
-  document.getElementById("vCards").classList.toggle("on",v==="cards");
-  document.getElementById("vBoard").classList.toggle("on",v==="board");
-  render();
+function renderAll(){
+  renderSummary('dutch'); renderSummary('global');
+  renderView('dutch'); renderView('global');
+  renderLiked(); updateMap();
 }
 
-/* ---------- boot ---------- */
+/* ── VIEW / SEARCH ── */
+function setView(scope,v){
+  FILT[scope].view=v;
+  document.getElementById(scope+'-vCards').classList.toggle('on',v==='cards');
+  document.getElementById(scope+'-vBoard').classList.toggle('on',v==='board');
+  renderView(scope);
+}
+
+/* ── BOOT ── */
 (async function(){
   await loadState();
   const src=await loadData();
-  document.getElementById("search").oninput=e=>{FILT.q=e.target.value.trim().toLowerCase();render();};
-  buildChips();
-  document.getElementById("updated").textContent="数据更新于 "+(GENERATED_AT||"—");
-  document.getElementById("srcNote").textContent= src==="live"
-    ? "数据源：data.json（由每日流水线生成）。申请状态保存在本地，流水线刷新不会覆盖。"
-    : "当前为示例数据（演示用）。接入流水线后会自动替换为四家公司的实时岗位。申请状态本地保存，刷新数据不丢失。";
-  render();
+
+  initMap();
+
+  // batch status select options
+  const bsel=document.getElementById('batchStatusSel');
+  bsel.innerHTML=STATUSES.filter(s=>s.k!=='none').map(s=>`<option value="${s.k}">${s.label}</option>`).join('');
+
+  document.getElementById('dutch-search').oninput=e=>{FILT.dutch.q=e.target.value.trim().toLowerCase();renderView('dutch');};
+  document.getElementById('global-search').oninput=e=>{FILT.global.q=e.target.value.trim().toLowerCase();renderView('global');};
+
+  buildChips('dutch'); buildChips('global');
+
+  document.getElementById('updated').textContent='数据更新于 '+(GEN_AT||'—');
+  document.getElementById('srcNote').textContent=src==='live'
+    ?'数据源：data.json（每日流水线生成）。申请状态、收藏与截止日期均保存在本地，刷新数据不会覆盖。'
+    :'当前为示例数据（演示用）。接入流水线后将自动替换为实时岗位。';
+
+  renderAll();
 })();
 </script>
 </body>
