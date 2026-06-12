@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # full history needed for rebase
 
       - uses: actions/setup-python@v5
         with:
@@ -34,6 +36,8 @@ jobs:
           git config user.name  "job-desk-bot"
           git config user.email "actions@github.com"
           git add jobs.db docs/data.json
-          git commit -m "data: daily refresh $(date -u +%F)" || echo "no changes"
-          git pull --rebase origin main
-          git push
+          git diff --staged --quiet && echo "no changes" || (
+            git commit -m "data: daily refresh $(date -u +%F)"
+            git rebase origin/main
+            git push
+          )
