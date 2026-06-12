@@ -20,6 +20,8 @@
   --s5:#B23B3B;--s5b:#FBEAEA;
   --s6:#7C6F5E;--s6b:#F0EDE8;
   --like:#E85D04;
+  --dutch-req:#B45309; --dutch-req-bg:#FEF3C7;
+  --dutch-ok:#2F7D2F;  --dutch-ok-bg:#E7F2E3;
 }
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.55;-webkit-font-smoothing:antialiased}
@@ -120,6 +122,8 @@ header{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-be
 .tag{font-size:11px;font-family:var(--mono);padding:2px 7px;border-radius:5px;border:1px solid var(--line);color:var(--muted);background:var(--surface2)}
 .tag.co{font-weight:600;color:var(--ink)}
 .tag.cat{border-color:#d4e7e0;color:var(--accent);background:var(--accent-soft)}
+.tag.dutch-req{border-color:#F0C040;color:var(--dutch-req);background:var(--dutch-req-bg);font-weight:600}
+.tag.dutch-ok{border-color:#A8D5A2;color:var(--dutch-ok);background:var(--dutch-ok-bg)}
 
 /* date row */
 .daterow{display:flex;flex-wrap:wrap;gap:6px;font-size:11px;color:var(--faint);font-family:var(--mono)}
@@ -203,6 +207,7 @@ select.status:focus{outline:none;border-color:var(--accent)}
         <div class="fgroup" id="dutch-fSeniority"></div>
         <div class="fgroup" id="dutch-fStatus"></div>
       </div>
+      <div class="crow"><div class="fgroup" id="dutch-fDutchLang"></div></div>
     </div>
     <div id="dutch-view"></div>
   </div>
@@ -307,12 +312,12 @@ function toggleLike(id)     { STATE.likes[id]=!STATE.likes[id]; if(!STATE.likes[
 function setDeadline(id, v) { if(v) STATE.deadlines[id]=v; else delete STATE.deadlines[id]; saveState(); }
 
 /* ── FILTER STATE ── */
-function mkFilt() { return {company:new Set(),cat:new Set(),seniority:new Set(),status:new Set(),q:"",view:"cards",selectMode:false,selected:new Set()}; }
+function mkFilt() { return {company:new Set(),cat:new Set(),seniority:new Set(),status:new Set(),q:"",view:"cards",selectMode:false,selected:new Set(),dutch_lang:null}; }
 const FILT = {dutch:mkFilt(), global:mkFilt()};
 let ACTIVE_TAB = 'dutch';
 
 /* ── DATA ── */
-const SAMPLE = {"generated_at":"2026-06-11","jobs":[{"id":"imc-quant-trader-grad","company":"IMC","company_category":"自营交易","title":"Quantitative Trader — Graduate 2026","job_category":"Quant","seniority":"Graduate","location":"Amsterdam, NL","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-06-09","last_seen":"2026-06-11","is_open":true},{"id":"imc-quant-research-intern","company":"IMC","company_category":"自营交易","title":"Quantitative Research Internship","job_category":"Quant","seniority":"Intern","location":"Amsterdam, NL","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-06-10","last_seen":"2026-06-11","is_open":true},{"id":"imc-swe-cpp","company":"IMC","company_category":"自营交易","title":"Software Engineer — C++ (Low Latency)","job_category":"SWE","seniority":"Experienced","location":"Amsterdam, NL","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-05-21","last_seen":"2026-06-11","is_open":true},{"id":"imc-fpga","company":"IMC","company_category":"自营交易","title":"FPGA Engineer","job_category":"SWE","seniority":"Experienced","location":"Sydney, AU","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-05-14","last_seen":"2026-06-11","is_open":true},{"id":"optiver-grad-trader","company":"Optiver","company_category":"自营交易","title":"Graduate Trader 2026","job_category":"Trading","seniority":"Graduate","location":"Amsterdam, NL","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-06-08","last_seen":"2026-06-11","is_open":true},{"id":"optiver-quant-researcher","company":"Optiver","company_category":"自营交易","title":"Quantitative Researcher","job_category":"Quant","seniority":"Experienced","location":"Amsterdam, NL","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-05-19","last_seen":"2026-06-11","is_open":true},{"id":"optiver-swe-ll","company":"Optiver","company_category":"自营交易","title":"Software Engineer — Low Latency","job_category":"SWE","seniority":"Experienced","location":"London, UK","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-05-27","last_seen":"2026-06-11","is_open":true},{"id":"optiver-risk-analyst","company":"Optiver","company_category":"自营交易","title":"Market Risk Analyst","job_category":"Risk","seniority":"Experienced","location":"Amsterdam, NL","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-05-12","last_seen":"2026-06-11","is_open":true},{"id":"asml-data-scientist","company":"ASML","company_category":"科技/半导体","title":"Data Scientist — Yield","job_category":"Data","seniority":"Experienced","location":"Veldhoven, NL","url":"https://www.asml.com/en/careers/find-a-job","first_seen":"2026-06-10","last_seen":"2026-06-11","is_open":true},{"id":"asml-ml-intern","company":"ASML","company_category":"科技/半导体","title":"Machine Learning Engineer Internship","job_category":"Data","seniority":"Intern","location":"Veldhoven, NL","url":"https://www.asml.com/en/careers/find-a-job","first_seen":"2026-05-30","last_seen":"2026-06-11","is_open":true},{"id":"asml-swe-litho","company":"ASML","company_category":"科技/半导体","title":"Software Engineer — Computational Lithography","job_category":"SWE","seniority":"Experienced","location":"Veldhoven, NL","url":"https://www.asml.com/en/careers/find-a-job","first_seen":"2026-05-16","last_seen":"2026-06-11","is_open":true},{"id":"robeco-quant-fi","company":"Robeco","company_category":"资产管理","title":"Quantitative Researcher — Fixed Income","job_category":"Quant","seniority":"Experienced","location":"Rotterdam, NL","url":"https://www.robeco.com/en-int/careers","first_seen":"2026-06-09","last_seen":"2026-06-11","is_open":true},{"id":"robeco-investment-analyst","company":"Robeco","company_category":"资产管理","title":"Investment Analyst — Sustainable Investing","job_category":"Finance","seniority":"Experienced","location":"Rotterdam, NL","url":"https://www.robeco.com/en-int/careers","first_seen":"2026-05-23","last_seen":"2026-06-11","is_open":true},{"id":"robeco-risk-manager","company":"Robeco","company_category":"资产管理","title":"Risk Manager — Investment Risk","job_category":"Risk","seniority":"Experienced","location":"Rotterdam, NL","url":"https://www.robeco.com/en-int/careers","first_seen":"2026-05-18","last_seen":"2026-06-11","is_open":true}]};
+const SAMPLE = {"generated_at":"2026-06-11","jobs":[{"id":"imc-quant-trader-grad","company":"IMC","company_category":"自营交易","title":"Quantitative Trader — Graduate 2026","job_category":"Quant","seniority":"Graduate","location":"Amsterdam, NL","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-06-09","last_seen":"2026-06-11","is_open":true,"requires_dutch":false},{"id":"imc-quant-research-intern","company":"IMC","company_category":"自营交易","title":"Quantitative Research Internship","job_category":"Quant","seniority":"Intern","location":"Amsterdam, NL","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-06-10","last_seen":"2026-06-11","is_open":true,"requires_dutch":false},{"id":"imc-swe-cpp","company":"IMC","company_category":"自营交易","title":"Software Engineer — C++ (Low Latency)","job_category":"SWE","seniority":"Experienced","location":"Amsterdam, NL","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-05-21","last_seen":"2026-06-11","is_open":true,"requires_dutch":false},{"id":"imc-fpga","company":"IMC","company_category":"自营交易","title":"FPGA Engineer","job_category":"SWE","seniority":"Experienced","location":"Sydney, AU","url":"https://job-boards.eu.greenhouse.io/imc","first_seen":"2026-05-14","last_seen":"2026-06-11","is_open":true,"requires_dutch":false},{"id":"optiver-grad-trader","company":"Optiver","company_category":"自营交易","title":"Graduate Trader 2026","job_category":"Trading","seniority":"Graduate","location":"Amsterdam, NL","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-06-08","last_seen":"2026-06-11","is_open":true,"requires_dutch":false},{"id":"optiver-quant-researcher","company":"Optiver","company_category":"自营交易","title":"Quantitative Researcher","job_category":"Quant","seniority":"Experienced","location":"Amsterdam, NL","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-05-19","last_seen":"2026-06-11","is_open":true,"requires_dutch":false},{"id":"optiver-swe-ll","company":"Optiver","company_category":"自营交易","title":"Software Engineer — Low Latency","job_category":"SWE","seniority":"Experienced","location":"London, UK","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-05-27","last_seen":"2026-06-11","is_open":true,"requires_dutch":null},{"id":"optiver-risk-analyst","company":"Optiver","company_category":"自营交易","title":"Market Risk Analyst","job_category":"Risk","seniority":"Experienced","location":"Amsterdam, NL","url":"https://optiver.com/working-at-optiver/career-opportunities/","first_seen":"2026-05-12","last_seen":"2026-06-11","is_open":true,"requires_dutch":false},{"id":"asml-data-scientist","company":"ASML","company_category":"科技/半导体","title":"Data Scientist — Yield","job_category":"Data","seniority":"Experienced","location":"Veldhoven, NL","url":"https://www.asml.com/en/careers/find-a-job","first_seen":"2026-06-10","last_seen":"2026-06-11","is_open":true,"requires_dutch":false},{"id":"asml-ml-intern","company":"ASML","company_category":"科技/半导体","title":"Machine Learning Engineer Internship","job_category":"Data","seniority":"Intern","location":"Veldhoven, NL","url":"https://www.asml.com/en/careers/find-a-job","first_seen":"2026-05-30","last_seen":"2026-06-11","is_open":true,"requires_dutch":false},{"id":"asml-swe-litho","company":"ASML","company_category":"科技/半导体","title":"Software Engineer — Computational Lithography","job_category":"SWE","seniority":"Experienced","location":"Veldhoven, NL","url":"https://www.asml.com/en/careers/find-a-job","first_seen":"2026-05-16","last_seen":"2026-06-11","is_open":true,"requires_dutch":true},{"id":"robeco-quant-fi","company":"Robeco","company_category":"资产管理","title":"Quantitative Researcher — Fixed Income","job_category":"Quant","seniority":"Experienced","location":"Rotterdam, NL","url":"https://www.robeco.com/en-int/careers","first_seen":"2026-06-09","last_seen":"2026-06-11","is_open":true,"requires_dutch":false},{"id":"robeco-investment-analyst","company":"Robeco","company_category":"资产管理","title":"Investment Analyst — Sustainable Investing","job_category":"Finance","seniority":"Experienced","location":"Rotterdam, NL","url":"https://www.robeco.com/en-int/careers","first_seen":"2026-05-23","last_seen":"2026-06-11","is_open":true,"requires_dutch":true},{"id":"robeco-risk-manager","company":"Robeco","company_category":"资产管理","title":"Risk Manager — Investment Risk","job_category":"Risk","seniority":"Experienced","location":"Rotterdam, NL","url":"https://www.robeco.com/en-int/careers","first_seen":"2026-05-18","last_seen":"2026-06-11","is_open":true,"requires_dutch":true}]};
 
 let JOBS=[], GEN_AT="";
 async function loadData() {
@@ -487,6 +492,10 @@ function passes(j,scope) {
   if(f.seniority.size&&!f.seniority.has(j.seniority)) return false;
   if(f.status.size&&!f.status.has(getStatus(j.id))) return false;
   if(f.q){const s=(j.title+' '+j.company+' '+j.location).toLowerCase();if(!s.includes(f.q)) return false;}
+  if(scope==='dutch' && f.dutch_lang!==null){
+    const cat = j.requires_dutch===true?'required':j.requires_dutch===false?'not_required':'unknown';
+    if(cat!==f.dutch_lang) return false;
+  }
   return true;
 }
 function uniq(jobs,key){return[...new Set(jobs.map(j=>j[key]))].filter(Boolean).sort();}
@@ -509,6 +518,21 @@ function buildChips(scope) {
   mk('fCat',uniq(jobs,'job_category'),'cat');
   mk('fSeniority',uniq(jobs,'seniority'),'seniority');
   mk('fStatus',STATUSES.map(s=>s.k),'status',STATUSES.map(s=>s.label));
+
+  if(scope==='dutch'){
+    const host=document.getElementById('dutch-fDutchLang'); host.innerHTML='';
+    const cap=document.createElement('span'); cap.className='cap'; cap.textContent='荷兰语要求'; host.appendChild(cap);
+    const opts=[{k:'required',label:'🇳🇱 明确要求'},{k:'not_required',label:'✓ 无明确要求'},{k:'unknown',label:'? 描述未知'}];
+    opts.forEach(opt=>{
+      const c=document.createElement('span'); c.className='chip'; c.textContent=opt.label;
+      c.onclick=()=>{
+        if(FILT.dutch.dutch_lang===opt.k){FILT.dutch.dutch_lang=null;c.classList.remove('on');}
+        else{host.querySelectorAll('.chip').forEach(ch=>ch.classList.remove('on'));FILT.dutch.dutch_lang=opt.k;c.classList.add('on');}
+        renderView('dutch');
+      };
+      host.appendChild(c);
+    });
+  }
 }
 
 /* ── CARD ── */
@@ -545,7 +569,10 @@ function makeCard(j, scope) {
 
   // meta
   const meta=document.createElement('div'); meta.className='meta';
-  meta.innerHTML=`<span class="tag co">${j.company}</span><span class="tag cat">${j.job_category}</span><span class="tag">${j.seniority}</span>`;
+  const dutchBadge = j.requires_dutch===true
+    ? '<span class="tag dutch-req">🇳🇱 需荷兰语</span>'
+    : j.requires_dutch===false ? '<span class="tag dutch-ok">✓ 无荷兰语要求</span>' : '';
+  meta.innerHTML=`<span class="tag co">${j.company}</span><span class="tag cat">${j.job_category}</span><span class="tag">${j.seniority}</span>${dutchBadge}`;
   el.appendChild(meta);
 
   // dates

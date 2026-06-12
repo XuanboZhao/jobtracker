@@ -22,7 +22,8 @@ CREATE TABLE IF NOT EXISTS jobs (
   company TEXT, company_category TEXT, title TEXT, url TEXT,
   location TEXT, department TEXT, job_category TEXT, seniority TEXT,
   posted_at TEXT, source_ats TEXT,
-  first_seen TEXT, last_seen TEXT, is_open INTEGER, closed_at TEXT
+  first_seen TEXT, last_seen TEXT, is_open INTEGER, closed_at TEXT,
+  requires_dutch INTEGER
 );
 """
 
@@ -32,6 +33,11 @@ class Store:
         self.con = sqlite3.connect(path)
         self.con.row_factory = sqlite3.Row
         self.con.executescript(SCHEMA)
+        try:
+            self.con.execute("ALTER TABLE jobs ADD COLUMN requires_dutch INTEGER")
+            self.con.commit()
+        except Exception:
+            pass  # column already exists
 
     def sync(self, jobs: list[JobRecord], today: str | None = None) -> dict:
         today = today or date.today().isoformat()
@@ -42,17 +48,21 @@ class Store:
             seen.add(j.id)
             row = cur.execute("SELECT id, first_seen FROM jobs WHERE id=?", (j.id,)).fetchone()
             if row is None:
+                d = j.to_dict()
+                d["fs"] = today
+                d["requires_dutch_int"] = None if j.requires_dutch is None else int(j.requires_dutch)
                 cur.execute(
                     """INSERT INTO jobs VALUES (:id,:company,:company_category,:title,:url,
                        :location,:department,:job_category,:seniority,:posted_at,:source_ats,
-                       :fs,:fs,1,NULL)""",
-                    {**j.to_dict(), "fs": today})
+                       :fs,:fs,1,NULL,:requires_dutch_int)""",
+                    d)
                 added.append(j.id)
             else:
                 cur.execute(
                     """UPDATE jobs SET last_seen=?, is_open=1, closed_at=NULL,
-                       title=?, url=?, location=?, job_category=?, seniority=? WHERE id=?""",
-                    (today, j.title, j.url, j.location, j.job_category, j.seniority, j.id))
+                       title=?, url=?, location=?, job_category=?, seniority=?, requires_dutch=? WHERE id=?""",
+                    (today, j.title, j.url, j.location, j.job_category, j.seniority,
+                     None if j.requires_dutch is None else int(j.requires_dutch), j.id))
         # close anything previously open that didn't show up today
         closed = []
         for row in cur.execute("SELECT id FROM jobs WHERE is_open=1").fetchall():

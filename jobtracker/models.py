@@ -17,6 +17,7 @@ class JobRecord:
     seniority: str = "Experienced"
     posted_at: str = ""           # ATS-provided date if any (ISO)
     source_ats: str = ""
+    requires_dutch: bool | None = None  # True=explicitly required, False=checked & not required, None=unknown
 
     def to_dict(self) -> dict:
         return asdict(self)

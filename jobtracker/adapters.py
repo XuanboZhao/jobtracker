@@ -10,6 +10,27 @@ from .models import JobRecord
 TIMEOUT = 20
 HEADERS = {"User-Agent": "job-desk/0.1 (personal job tracker)"}
 
+_NL_PATTERNS = [
+    r"fluent\s+(?:in\s+)?dutch",
+    r"dutch\s+(?:language|speaker|speaking|proficiency|skills?|required|mandatory)",
+    r"native\s+dutch",
+    r"professional\s+(?:proficiency\s+in\s+)?dutch",
+    r"dutch\s+is\s+(?:required|mandatory|essential|a\s+must)",
+    r"must\s+(?:speak|be\s+fluent\s+in)\s+dutch",
+    r"vloeiend\s+(?:in\s+het\s+)?nederlands",
+    r"nederlandse?\s+taal(?:vaardigheid)?",
+    r"beheersing\s+van\s+(?:het\s+)?nederlands",
+    r"je\s+spreekt\s+(?:vloeiend\s+)?nederlands",
+]
+
+def _check_dutch(html: str) -> bool | None:
+    """Return True if text explicitly requires Dutch, False if description exists but no mention."""
+    if not html:
+        return None
+    import re as _re
+    text = _re.sub(r"<[^>]+>", " ", html).lower()
+    return any(_re.search(p, text) for p in _NL_PATTERNS)
+
 
 def _gid(ats: str, company: str, ext) -> str:
     return f"{ats}-{company}-{ext}".lower().replace(" ", "-")
@@ -21,11 +42,13 @@ def greenhouse(cfg: dict) -> list[JobRecord]:
     """
     token = cfg["token"]
     url = f"https://boards-api.greenhouse.io/v1/boards/{token}/jobs"
-    r = requests.get(url, params={"content": "false"}, headers=HEADERS, timeout=TIMEOUT)
+    r = requests.get(url, params={"content": "true"}, headers=HEADERS, timeout=TIMEOUT)
     r.raise_for_status()
     out = []
     for j in r.json().get("jobs", []):
         loc = (j.get("location") or {}).get("name", "") or ""
+        content = j.get("content") or ""
+        dutch = _check_dutch(content)
         out.append(JobRecord(
             id=_gid("gh", cfg["name"], j["id"]),
             company=cfg["name"],
@@ -35,6 +58,7 @@ def greenhouse(cfg: dict) -> list[JobRecord]:
             location=loc,
             posted_at=(j.get("updated_at") or j.get("first_published") or "")[:10],
             source_ats="greenhouse",
+            requires_dutch=dutch,
         ))
     return out
 
@@ -50,6 +74,8 @@ def lever(cfg: dict) -> list[JobRecord]:
     out = []
     for j in r.json():
         cats = j.get("categories", {}) or {}
+        content = (j.get("descriptionPlain") or j.get("description") or "")
+        dutch = _check_dutch(content)
         out.append(JobRecord(
             id=_gid("lv", cfg["name"], j.get("id", j.get("text", ""))),
             company=cfg["name"],
@@ -60,6 +86,7 @@ def lever(cfg: dict) -> list[JobRecord]:
             department=cats.get("team", "") or "",
             posted_at=str(j.get("createdAt", ""))[:10],
             source_ats="lever",
+            requires_dutch=dutch,
         ))
     return out
 
