@@ -7,7 +7,7 @@ from __future__ import annotations
 import requests
 from .models import JobRecord
 
-TIMEOUT = 20
+TIMEOUT = 40
 HEADERS = {"User-Agent": "job-desk/0.1 (personal job tracker)"}
 
 _NL_PATTERNS = [
@@ -119,7 +119,9 @@ def workday(cfg: dict) -> list[JobRecord]:
             return (_date.today() - _td(days=int(m.group(1)) * 30)).isoformat()
         return ""
 
-    out, offset, limit = [], 0, 50
+    # Some Workday boards reject limit>20 with HTTP 400.
+    # total is only reliable on the first page; cache it and use it to stop pagination.
+    out, offset, limit, total = [], 0, 20, None
     while True:
         r = requests.post(
             api,
@@ -132,6 +134,8 @@ def workday(cfg: dict) -> list[JobRecord]:
         postings = data.get("jobPostings", [])
         if not postings:
             break
+        if total is None:
+            total = data.get("total", 0)
         for j in postings:
             path = j.get("externalPath", "")
             ext_id = path.split("/")[-1] if path else j.get("title", "")
@@ -144,11 +148,11 @@ def workday(cfg: dict) -> list[JobRecord]:
                 location=j.get("locationsText", "") or "",
                 posted_at=_parse_posted(j.get("postedOn", "")),
                 source_ats="workday",
-                requires_dutch=None,  # description requires per-job fetch; skipped for now
+                requires_dutch=None,
             ))
-        if offset + limit >= data.get("total", 0):
-            break
         offset += limit
+        if total and offset >= total:
+            break
     return out
 
 
