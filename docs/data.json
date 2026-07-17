@@ -1,7 +1,79 @@
 {
-  "generated_at": "2026-07-16",
+  "generated_at": "2026-07-17",
   "new_days": 7,
   "jobs": [
+    {
+      "id": "gh-flow-traders-6492219",
+      "company": "Flow Traders",
+      "company_category": "自营交易",
+      "title": "Junior Quantitative Researcher",
+      "url": "https://job-boards.greenhouse.io/flowtraders/jobs/6492219",
+      "location": "Amsterdam",
+      "department": "",
+      "job_category": "Quant",
+      "seniority": "Graduate",
+      "posted_at": "2026-07-17",
+      "source_ats": "greenhouse",
+      "first_seen": "2026-07-17",
+      "last_seen": "2026-07-17",
+      "is_open": true,
+      "closed_at": null,
+      "requires_dutch": 0
+    },
+    {
+      "id": "gh-jump-trading-7847009",
+      "company": "Jump Trading",
+      "company_category": "自营交易",
+      "title": "Software Engineer | Market Data Systems",
+      "url": "https://www.jumptrading.com/hr/job?gh_jid=7847009",
+      "location": "Chicago",
+      "department": "",
+      "job_category": "SWE",
+      "seniority": "Experienced",
+      "posted_at": "2026-07-16",
+      "source_ats": "greenhouse",
+      "first_seen": "2026-07-17",
+      "last_seen": "2026-07-17",
+      "is_open": true,
+      "closed_at": null,
+      "requires_dutch": 0
+    },
+    {
+      "id": "wd-ing-cma-ecg-corporate-finance---m-a-analyst_req-10117992-2",
+      "company": "ING",
+      "company_category": "银行",
+      "title": "CMA ECG Corporate Finance | M&A Analyst",
+      "url": "https://ing.wd3.myworkdayjobs.com/job/AME-Amsterdam---Maple/CMA-ECG-Corporate-Finance---M-A-Analyst_REQ-10117992-2",
+      "location": "AME (Amsterdam - Maple)",
+      "department": "",
+      "job_category": "Finance",
+      "seniority": "Experienced",
+      "posted_at": "2026-07-17",
+      "source_ats": "workday",
+      "first_seen": "2026-07-17",
+      "last_seen": "2026-07-17",
+      "is_open": true,
+      "closed_at": null,
+      "requires_dutch": null
+    },
+    {
+      "id": "wd-nn-group-ro-finance-business-controller-ii_req2707754",
+      "company": "NN Group",
+      "company_category": "银行",
+      "title": "RO Finance Business Controller II",
+      "url": "https://nngroup.wd3.myworkdayjobs.com/job/Bucuresti/RO-Finance-Business-Controller-II_REQ2707754",
+      "location": "Bucuresti",
+      "department": "",
+      "job_category": "Finance",
+      "seniority": "Experienced",
+      "posted_at": "2026-07-17",
+      "source_ats": "workday",
+      "first_seen": "2026-07-17",
+      "last_seen": "2026-07-17",
+      "is_open": true,
+      "closed_at": null,
+      "requires_dutch": null
+    },
     {
       "id": "gh-imc-4929135101",
       "company": "IMC",
@@ -15,7 +87,7 @@
       "posted_at": "2026-07-15",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-16",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -33,7 +105,7 @@
       "posted_at": "2026-07-16",
       "source_ats": "workday",
       "first_seen": "2026-07-16",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -51,7 +123,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-07-16",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -69,7 +141,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-07-16",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -87,7 +159,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-07-16",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -105,7 +177,7 @@
       "posted_at": "2026-07-15",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-15",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -123,7 +195,7 @@
       "posted_at": "2026-07-14",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-15",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -141,7 +213,7 @@
       "posted_at": "2026-07-14",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -159,7 +231,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -177,7 +249,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -195,7 +267,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -213,7 +285,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -231,7 +303,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -249,7 +321,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -267,7 +339,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -285,7 +357,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -303,7 +375,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -321,7 +393,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -339,7 +411,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -357,7 +429,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -375,7 +447,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -393,7 +465,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -411,7 +483,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -429,7 +501,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -447,7 +519,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -465,7 +537,7 @@
       "posted_at": "2026-07-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -483,43 +555,7 @@
       "posted_at": "2026-07-14",
       "source_ats": "workday",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
-      "is_open": true,
-      "closed_at": null,
-      "requires_dutch": null
-    },
-    {
-      "id": "wd-rabobank-medior-data-scientist-transaction-monitoring_jr_00143036-1",
-      "company": "Rabobank",
-      "company_category": "银行",
-      "title": "Medior data scientist Transaction monitoring",
-      "url": "https://rabobank.wd3.myworkdayjobs.com/job/Utrecht-Croeselaan-18/Medior-data-scientist-Transaction-monitoring_JR_00143036-1",
-      "location": "Utrecht Croeselaan 18",
-      "department": "",
-      "job_category": "Data",
-      "seniority": "Experienced",
-      "posted_at": "",
-      "source_ats": "workday",
-      "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
-      "is_open": true,
-      "closed_at": null,
-      "requires_dutch": null
-    },
-    {
-      "id": "wd-nn-group-business-manager-data---ai_req2707675",
-      "company": "NN Group",
-      "company_category": "银行",
-      "title": "Business Manager Data & AI",
-      "url": "https://nngroup.wd3.myworkdayjobs.com/job/Rotterdam/Business-Manager-Data---AI_REQ2707675",
-      "location": "Rotterdam",
-      "department": "",
-      "job_category": "Data",
-      "seniority": "Experienced",
-      "posted_at": "",
-      "source_ats": "workday",
-      "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -537,7 +573,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-07-14",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -555,7 +591,7 @@
       "posted_at": "2026-07-09",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-10",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -573,7 +609,7 @@
       "posted_at": "2026-07-09",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-10",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -591,7 +627,7 @@
       "posted_at": "2026-07-10",
       "source_ats": "workday",
       "first_seen": "2026-07-10",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -609,7 +645,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -627,7 +663,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -645,7 +681,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -663,7 +699,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -681,7 +717,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -699,7 +735,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -717,7 +753,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -735,7 +771,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -753,7 +789,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -771,7 +807,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -789,7 +825,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -807,7 +843,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -825,7 +861,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -843,7 +879,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -861,7 +897,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -879,7 +915,7 @@
       "posted_at": "2026-07-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -897,7 +933,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-07-09",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -915,7 +951,7 @@
       "posted_at": "2026-07-07",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-08",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -933,7 +969,7 @@
       "posted_at": "2026-07-07",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-08",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -951,7 +987,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-07-08",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -969,7 +1005,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-07-08",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -987,7 +1023,7 @@
       "posted_at": "2026-07-06",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-07",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1005,25 +1041,7 @@
       "posted_at": "2026-07-06",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-07",
-      "last_seen": "2026-07-16",
-      "is_open": true,
-      "closed_at": null,
-      "requires_dutch": 0
-    },
-    {
-      "id": "gh-imc-4917439101",
-      "company": "IMC",
-      "company_category": "自营交易",
-      "title": "2027 - Quant Research Intern - IIT Madras",
-      "url": "https://job-boards.eu.greenhouse.io/imc/jobs/4917439101",
-      "location": "Amsterdam, Netherlands; Mumbai, India",
-      "department": "",
-      "job_category": "Quant",
-      "seniority": "Intern",
-      "posted_at": "2026-07-06",
-      "source_ats": "greenhouse",
-      "first_seen": "2026-07-07",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1041,7 +1059,7 @@
       "posted_at": "2026-07-06",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-07",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1059,7 +1077,7 @@
       "posted_at": "2026-07-06",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-07",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1077,7 +1095,7 @@
       "posted_at": "2026-07-06",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-07",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1095,7 +1113,7 @@
       "posted_at": "2026-07-06",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-07",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1113,7 +1131,7 @@
       "posted_at": "2026-07-06",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-07",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1131,7 +1149,7 @@
       "posted_at": "2026-07-06",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-07",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1149,7 +1167,7 @@
       "posted_at": "2026-07-06",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-07",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1167,7 +1185,7 @@
       "posted_at": "2026-07-06",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-07",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1185,7 +1203,7 @@
       "posted_at": "2026-07-02",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-03",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1203,7 +1221,7 @@
       "posted_at": "2026-07-01",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-02",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1221,7 +1239,7 @@
       "posted_at": "2026-07-01",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-02",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1239,7 +1257,7 @@
       "posted_at": "2026-07-01",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-02",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1257,7 +1275,7 @@
       "posted_at": "2026-07-01",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-02",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1275,7 +1293,7 @@
       "posted_at": "2026-07-01",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-02",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1293,7 +1311,7 @@
       "posted_at": "2026-07-01",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-02",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1311,7 +1329,7 @@
       "posted_at": "2026-07-01",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-02",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1329,7 +1347,7 @@
       "posted_at": "2026-07-01",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-02",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1347,7 +1365,7 @@
       "posted_at": "2026-07-01",
       "source_ats": "greenhouse",
       "first_seen": "2026-07-01",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1365,7 +1383,7 @@
       "posted_at": "2026-07-01",
       "source_ats": "workday",
       "first_seen": "2026-07-01",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1383,7 +1401,7 @@
       "posted_at": "2026-06-30",
       "source_ats": "workday",
       "first_seen": "2026-06-30",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1401,7 +1419,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-30",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1419,7 +1437,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-30",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1437,7 +1455,7 @@
       "posted_at": "2026-06-26",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-27",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1455,7 +1473,7 @@
       "posted_at": "2026-06-26",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-27",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1473,7 +1491,7 @@
       "posted_at": "2026-06-24",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-25",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1491,7 +1509,7 @@
       "posted_at": "2026-06-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-25",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1509,7 +1527,7 @@
       "posted_at": "2026-06-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-25",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1527,7 +1545,7 @@
       "posted_at": "2026-06-25",
       "source_ats": "workday",
       "first_seen": "2026-06-25",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1545,7 +1563,7 @@
       "posted_at": "2026-06-25",
       "source_ats": "workday",
       "first_seen": "2026-06-25",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1563,7 +1581,7 @@
       "posted_at": "2026-06-24",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-24",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1581,7 +1599,7 @@
       "posted_at": "2026-06-24",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-24",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1599,7 +1617,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-24",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1617,7 +1635,7 @@
       "posted_at": "2026-06-23",
       "source_ats": "workday",
       "first_seen": "2026-06-23",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1635,7 +1653,7 @@
       "posted_at": "2026-06-23",
       "source_ats": "workday",
       "first_seen": "2026-06-23",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1653,7 +1671,7 @@
       "posted_at": "2026-06-23",
       "source_ats": "workday",
       "first_seen": "2026-06-23",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1671,7 +1689,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-23",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1689,7 +1707,7 @@
       "posted_at": "2026-06-21",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-22",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1707,7 +1725,7 @@
       "posted_at": "2026-06-17",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1725,7 +1743,7 @@
       "posted_at": "2026-06-19",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -1743,25 +1761,25 @@
       "posted_at": "2026-06-17",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
     },
     {
-      "id": "wd-ing-intern---data-scientist---genai-chatbot_req-10115652",
+      "id": "wd-ing-data-analyst_req-10115432-3",
       "company": "ING",
       "company_category": "银行",
-      "title": "Intern - Data Scientist - GenAI Chatbot",
-      "url": "https://ing.wd3.myworkdayjobs.com/job/ACT-Amsterdam---Acanthus/Intern---Data-Scientist---GenAI-Chatbot_REQ-10115652",
+      "title": "Data Analyst",
+      "url": "https://ing.wd3.myworkdayjobs.com/job/ACT-Amsterdam---Acanthus/Data-Analyst_REQ-10115432-3",
       "location": "ACT (Amsterdam - Acanthus)",
       "department": "",
-      "job_category": "Data",
-      "seniority": "Intern",
-      "posted_at": "2026-06-02",
+      "job_category": "Finance",
+      "seniority": "Experienced",
+      "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1779,7 +1797,7 @@
       "posted_at": "2026-06-18",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1797,7 +1815,7 @@
       "posted_at": "2026-06-17",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1815,7 +1833,7 @@
       "posted_at": "2026-06-12",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1833,7 +1851,7 @@
       "posted_at": "2026-06-08",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1851,7 +1869,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1869,7 +1887,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1887,7 +1905,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1905,7 +1923,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1923,7 +1941,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1941,7 +1959,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1959,7 +1977,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1977,7 +1995,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -1995,7 +2013,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2013,7 +2031,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2031,7 +2049,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2049,7 +2067,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2067,7 +2085,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2085,7 +2103,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2103,7 +2121,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2121,7 +2139,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2139,7 +2157,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2157,7 +2175,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2175,7 +2193,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2193,7 +2211,7 @@
       "posted_at": "2026-06-17",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2211,7 +2229,7 @@
       "posted_at": "2026-06-09",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2229,7 +2247,7 @@
       "posted_at": "2026-06-04",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2247,7 +2265,7 @@
       "posted_at": "2026-06-03",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2265,7 +2283,7 @@
       "posted_at": "2026-06-02",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2283,7 +2301,7 @@
       "posted_at": "2026-05-29",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2301,7 +2319,7 @@
       "posted_at": "2026-05-29",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2319,7 +2337,7 @@
       "posted_at": "2026-05-29",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2337,7 +2355,7 @@
       "posted_at": "2026-05-29",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2355,7 +2373,7 @@
       "posted_at": "2026-05-29",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2373,7 +2391,7 @@
       "posted_at": "2026-05-28",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2391,7 +2409,7 @@
       "posted_at": "2026-05-27",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2409,7 +2427,7 @@
       "posted_at": "2026-05-26",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2427,7 +2445,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2445,7 +2463,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2463,7 +2481,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2481,7 +2499,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2499,7 +2517,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2517,7 +2535,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2535,7 +2553,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2553,7 +2571,7 @@
       "posted_at": "",
       "source_ats": "workday",
       "first_seen": "2026-06-20",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": null
@@ -2571,7 +2589,7 @@
       "posted_at": "2026-06-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2589,7 +2607,7 @@
       "posted_at": "2026-06-01",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2607,7 +2625,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2625,7 +2643,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2643,7 +2661,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2661,7 +2679,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2679,7 +2697,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2697,7 +2715,7 @@
       "posted_at": "2026-06-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2715,7 +2733,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2733,7 +2751,7 @@
       "posted_at": "2026-05-27",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2751,7 +2769,7 @@
       "posted_at": "2026-06-05",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2769,7 +2787,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2787,7 +2805,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2805,7 +2823,7 @@
       "posted_at": "2026-05-26",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2823,7 +2841,7 @@
       "posted_at": "2026-05-29",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2841,7 +2859,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2859,7 +2877,7 @@
       "posted_at": "2026-06-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2877,7 +2895,7 @@
       "posted_at": "2026-05-19",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2895,7 +2913,7 @@
       "posted_at": "2026-05-26",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2913,7 +2931,7 @@
       "posted_at": "2026-05-19",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2931,7 +2949,7 @@
       "posted_at": "2026-05-19",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2949,7 +2967,7 @@
       "posted_at": "2026-05-28",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2967,7 +2985,7 @@
       "posted_at": "2026-05-19",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -2985,7 +3003,7 @@
       "posted_at": "2026-05-19",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3003,7 +3021,7 @@
       "posted_at": "2026-05-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3021,7 +3039,7 @@
       "posted_at": "2026-05-19",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3039,7 +3057,7 @@
       "posted_at": "2026-05-19",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3057,7 +3075,7 @@
       "posted_at": "2026-05-19",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3075,7 +3093,7 @@
       "posted_at": "2026-02-13",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3093,7 +3111,7 @@
       "posted_at": "2026-06-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3111,7 +3129,7 @@
       "posted_at": "2026-06-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3129,7 +3147,7 @@
       "posted_at": "2026-05-14",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3147,7 +3165,7 @@
       "posted_at": "2026-06-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3165,7 +3183,7 @@
       "posted_at": "2026-03-06",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3183,7 +3201,7 @@
       "posted_at": "2026-02-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3201,7 +3219,7 @@
       "posted_at": "2026-02-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3219,7 +3237,7 @@
       "posted_at": "2026-02-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3237,7 +3255,7 @@
       "posted_at": "2026-02-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3255,7 +3273,7 @@
       "posted_at": "2026-02-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3273,7 +3291,7 @@
       "posted_at": "2026-02-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3291,7 +3309,7 @@
       "posted_at": "2026-05-28",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3309,7 +3327,7 @@
       "posted_at": "2026-05-28",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3327,7 +3345,7 @@
       "posted_at": "2026-05-27",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3345,7 +3363,7 @@
       "posted_at": "2026-05-27",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3363,7 +3381,7 @@
       "posted_at": "2026-05-27",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3381,7 +3399,7 @@
       "posted_at": "2026-05-27",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3399,7 +3417,7 @@
       "posted_at": "2026-02-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3417,7 +3435,7 @@
       "posted_at": "2026-02-17",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3435,7 +3453,7 @@
       "posted_at": "2026-05-18",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3453,7 +3471,7 @@
       "posted_at": "2026-05-18",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3471,7 +3489,7 @@
       "posted_at": "2026-06-01",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3489,7 +3507,7 @@
       "posted_at": "2026-04-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3507,7 +3525,7 @@
       "posted_at": "2026-02-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3525,7 +3543,7 @@
       "posted_at": "2026-02-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3543,7 +3561,7 @@
       "posted_at": "2026-02-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3561,7 +3579,7 @@
       "posted_at": "2026-06-03",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3579,7 +3597,7 @@
       "posted_at": "2026-06-03",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3597,7 +3615,7 @@
       "posted_at": "2026-04-07",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3615,7 +3633,7 @@
       "posted_at": "2026-04-23",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3633,7 +3651,7 @@
       "posted_at": "2026-05-15",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3651,7 +3669,7 @@
       "posted_at": "2026-02-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3669,7 +3687,7 @@
       "posted_at": "2026-04-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3687,7 +3705,7 @@
       "posted_at": "2026-04-17",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3705,7 +3723,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3723,7 +3741,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3741,7 +3759,7 @@
       "posted_at": "2026-05-20",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3759,7 +3777,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3777,7 +3795,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3795,7 +3813,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3813,7 +3831,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3831,7 +3849,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3849,7 +3867,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3867,7 +3885,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3885,7 +3903,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3903,7 +3921,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3921,7 +3939,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3939,7 +3957,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3957,7 +3975,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3975,7 +3993,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -3993,7 +4011,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4011,7 +4029,7 @@
       "posted_at": "2026-05-19",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4029,7 +4047,7 @@
       "posted_at": "2026-06-04",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4047,7 +4065,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4065,7 +4083,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4083,7 +4101,7 @@
       "posted_at": "2026-06-04",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4101,7 +4119,7 @@
       "posted_at": "2026-06-04",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4119,7 +4137,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4137,7 +4155,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4155,7 +4173,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4173,7 +4191,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4191,7 +4209,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4209,7 +4227,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4227,7 +4245,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4245,7 +4263,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4263,7 +4281,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4281,7 +4299,7 @@
       "posted_at": "2026-06-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4299,7 +4317,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4317,7 +4335,7 @@
       "posted_at": "2026-06-02",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4335,7 +4353,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4353,7 +4371,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4371,7 +4389,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4389,7 +4407,7 @@
       "posted_at": "2026-05-21",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4407,7 +4425,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4425,7 +4443,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4443,7 +4461,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4461,7 +4479,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4479,7 +4497,7 @@
       "posted_at": "2026-06-02",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4497,7 +4515,7 @@
       "posted_at": "2026-06-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4515,7 +4533,7 @@
       "posted_at": "2026-06-10",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4533,7 +4551,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4551,7 +4569,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4569,7 +4587,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4587,7 +4605,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4605,7 +4623,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4623,7 +4641,7 @@
       "posted_at": "2026-05-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4641,7 +4659,7 @@
       "posted_at": "2026-05-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4659,7 +4677,7 @@
       "posted_at": "2026-05-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4677,7 +4695,7 @@
       "posted_at": "2026-05-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4695,7 +4713,7 @@
       "posted_at": "2026-05-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4713,7 +4731,7 @@
       "posted_at": "2026-06-02",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4731,7 +4749,7 @@
       "posted_at": "2026-05-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4749,7 +4767,7 @@
       "posted_at": "2026-05-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4767,7 +4785,7 @@
       "posted_at": "2026-06-05",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4785,7 +4803,7 @@
       "posted_at": "2026-05-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4803,7 +4821,7 @@
       "posted_at": "2026-05-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4821,7 +4839,7 @@
       "posted_at": "2026-05-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4839,7 +4857,7 @@
       "posted_at": "2026-05-31",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4857,7 +4875,7 @@
       "posted_at": "2026-05-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4875,7 +4893,7 @@
       "posted_at": "2026-05-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4893,7 +4911,7 @@
       "posted_at": "2026-05-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4911,7 +4929,7 @@
       "posted_at": "2026-05-12",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4929,7 +4947,7 @@
       "posted_at": "2026-06-02",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-12",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4947,7 +4965,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4965,7 +4983,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -4983,7 +5001,7 @@
       "posted_at": "2026-06-10",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5001,7 +5019,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5019,7 +5037,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5037,7 +5055,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5055,7 +5073,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5073,7 +5091,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5091,7 +5109,7 @@
       "posted_at": "2026-06-02",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5109,7 +5127,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5127,7 +5145,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5145,7 +5163,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5163,7 +5181,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5181,7 +5199,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5199,7 +5217,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5217,7 +5235,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5235,7 +5253,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5253,7 +5271,7 @@
       "posted_at": "2026-06-09",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5271,7 +5289,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5289,7 +5307,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5307,7 +5325,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5325,7 +5343,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5343,7 +5361,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5361,7 +5379,7 @@
       "posted_at": "2026-05-29",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5379,7 +5397,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5397,7 +5415,7 @@
       "posted_at": "2026-06-05",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5415,7 +5433,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5433,7 +5451,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5451,7 +5469,7 @@
       "posted_at": "2026-06-10",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5469,7 +5487,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5487,7 +5505,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5505,7 +5523,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5523,7 +5541,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5541,7 +5559,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5559,7 +5577,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5577,7 +5595,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5595,7 +5613,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5613,7 +5631,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5631,7 +5649,7 @@
       "posted_at": "2026-06-03",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5649,7 +5667,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5667,7 +5685,7 @@
       "posted_at": "2026-06-02",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5685,7 +5703,7 @@
       "posted_at": "2026-06-09",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5703,7 +5721,7 @@
       "posted_at": "2026-06-01",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5721,7 +5739,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5739,7 +5757,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5757,7 +5775,7 @@
       "posted_at": "2026-06-01",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5775,7 +5793,7 @@
       "posted_at": "2026-06-08",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5793,7 +5811,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5811,7 +5829,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5829,7 +5847,7 @@
       "posted_at": "2026-06-11",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5847,7 +5865,7 @@
       "posted_at": "2026-06-02",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5865,7 +5883,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5883,7 +5901,7 @@
       "posted_at": "2026-05-25",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
@@ -5901,7 +5919,7 @@
       "posted_at": "2026-06-03",
       "source_ats": "greenhouse",
       "first_seen": "2026-06-11",
-      "last_seen": "2026-07-16",
+      "last_seen": "2026-07-17",
       "is_open": true,
       "closed_at": null,
       "requires_dutch": 0
